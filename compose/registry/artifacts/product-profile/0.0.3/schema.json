@@ -1,0 +1,654 @@
+{
+    "$defs": {
+        "AEOStatus": {
+            "additionalProperties": false,
+            "description": "Authorized Economic Operator certification for trusted trader status",
+            "properties": {
+                "aeo_certificate_number_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "aeo_type_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "aeo_validity_date_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "AEOStatus",
+            "type": "object"
+        },
+        "BorderCrossing": {
+            "additionalProperties": false,
+            "description": "Border crossing and customs clearance location information",
+            "properties": {
+                "border_crossing_date_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "customs_office_code_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entry_port_code_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "exit_port_code_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "BorderCrossing",
+            "type": "object"
+        },
+        "CustomsDocumentation": {
+            "additionalProperties": false,
+            "description": "Customs documents linked to import operations for verification and traceability",
+            "properties": {
+                "customs_document_id_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "customs_document_type_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "customs_document_urls_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "customs_issuing_authority_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "CustomsDocumentation",
+            "type": "object"
+        },
+        "EoriNumber": {
+            "additionalProperties": false,
+            "description": "EORI number - European Union registration and identification number for import/export businesses",
+            "properties": {
+                "eori_number_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "EoriNumber",
+            "type": "object"
+        },
+        "GTIN14": {
+            "additionalProperties": false,
+            "description": "Global Trade Item Number, 14-digit format",
+            "properties": {
+                "gtin_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "GTIN14",
+            "type": "object"
+        },
+        "GeneralProductInformation": {
+            "additionalProperties": false,
+            "description": "General product information",
+            "title": "GeneralProductInformation",
+            "type": "object"
+        },
+        "ImportAuthorization": {
+            "additionalProperties": false,
+            "description": "Import licenses and permits required for restricted or controlled goods",
+            "properties": {
+                "import_license_number_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "permit_issuing_authority_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "permit_type_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "permit_validity_period_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ImportAuthorization",
+            "type": "object"
+        },
+        "ImportExportOperation": {
+            "additionalProperties": false,
+            "description": "Individual import or export operation providing activity history for EORI holder",
+            "properties": {
+                "incoterms_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "operation_date_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "operation_quantities_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "operation_type_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "operation_value_amount_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "shipment_transaction_id_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ImportExportOperation",
+            "type": "object"
+        },
+        "ImporterJurisdiction": {
+            "additionalProperties": false,
+            "description": "Legal jurisdiction of importer's establishment for EORI validation",
+            "properties": {
+                "jurisdiction_country_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ImporterJurisdiction",
+            "type": "object"
+        },
+        "InformationRelatedToTheImporter": {
+            "additionalProperties": false,
+            "description": "Information related to the product importer",
+            "title": "InformationRelatedToTheImporter",
+            "type": "object"
+        },
+        "LotBatchNumber": {
+            "additionalProperties": false,
+            "description": "Lot / batch number",
+            "properties": {
+                "lot_batch_number_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "LotBatchNumber",
+            "type": "object"
+        },
+        "ManufacturersInformation": {
+            "additionalProperties": false,
+            "description": "Information about the product manufacturer",
+            "title": "ManufacturersInformation",
+            "type": "object"
+        },
+        "ManufacturingDate": {
+            "additionalProperties": false,
+            "description": "Manufacturing date (month and year), suggested in form of manufacturing date codes",
+            "properties": {
+                "manufacturing_date_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ManufacturingDate",
+            "type": "object"
+        },
+        "ManufacturingFacility": {
+            "additionalProperties": false,
+            "description": "Physical manufacturing facility with GS1 GLN and hierarchical linking",
+            "properties": {
+                "coordinates_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "facility_gln_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "facility_name_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "facility_type_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "osid_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "parent_gln_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ManufacturingFacility",
+            "type": "object"
+        },
+        "MaterialIdentification": {
+            "additionalProperties": false,
+            "description": "Structured material composition with standardized nomenclature and origin tracking",
+            "properties": {
+                "cas_registry_number_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "iso_standard_reference_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "materials_composition_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "unspsc_code_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MaterialIdentification",
+            "type": "object"
+        },
+        "Name": {
+            "additionalProperties": false,
+            "description": "Name of the manufacturer",
+            "properties": {
+                "name_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Name",
+            "type": "object"
+        },
+        "OrganizationEntity": {
+            "additionalProperties": false,
+            "description": "Legal entity information with GS1 GLN as preferred identifier",
+            "properties": {
+                "company_registration_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "country_of_incorporation_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "legal_name_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "lei_code_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "organization_gln_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vat_number_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "OrganizationEntity",
+            "type": "object"
+        },
+        "PhysicalAttributes": {
+            "additionalProperties": false,
+            "description": "Core physical characteristics of the product at system entry",
+            "properties": {
+                "dimensions_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "volume_liquid_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "volume_solid_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "weight_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "PhysicalAttributes",
+            "type": "object"
+        },
+        "PostalAddress": {
+            "additionalProperties": false,
+            "description": "Address of the manufacturer",
+            "properties": {
+                "postal_address_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "PostalAddress",
+            "type": "object"
+        },
+        "ProductIdentification": {
+            "additionalProperties": false,
+            "description": "Root class for product identification information",
+            "title": "ProductIdentification",
+            "type": "object"
+        },
+        "ProductImages": {
+            "additionalProperties": false,
+            "description": "Product images for branding and visual identification",
+            "properties": {
+                "images_value": {
+                    "pattern": "^https?://.*\\.(jpg|jpeg|png|gif|bmp|webp)(,\\s*https?://.*\\.(jpg|jpeg|png|gif|bmp|webp))*$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ProductImages",
+            "type": "object"
+        },
+        "ProductSpecification": {
+            "additionalProperties": false,
+            "description": "Product specification details",
+            "title": "ProductSpecification",
+            "type": "object"
+        },
+        "ProductType": {
+            "additionalProperties": false,
+            "description": "Product type and classification",
+            "properties": {
+                "type_value": {
+                    "pattern": "^[0-9]{3}|[A-Z0-9]{2,10}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ProductType",
+            "type": "object"
+        },
+        "RegisteredTradeNameOrTradeMark": {
+            "additionalProperties": false,
+            "description": "Registered trade name or trademark",
+            "properties": {
+                "registered_trade_name_or_trade_mark_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "RegisteredTradeNameOrTradeMark",
+            "type": "object"
+        },
+        "RegulatoryClassification": {
+            "additionalProperties": false,
+            "description": "Regulatory categories and classifications at product entry",
+            "properties": {
+                "ce_marking_category_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ghs_classification_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gpc_code_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "product_category_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "safety_classification_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "RegulatoryClassification",
+            "type": "object"
+        },
+        "SerialNumber": {
+            "additionalProperties": false,
+            "description": "Serial number",
+            "properties": {
+                "serial_number_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "SerialNumber",
+            "type": "object"
+        },
+        "SpecificProductInformation": {
+            "additionalProperties": false,
+            "description": "Specific product information",
+            "title": "SpecificProductInformation",
+            "type": "object"
+        },
+        "TariffClassification": {
+            "additionalProperties": false,
+            "description": "Customs tariff classification codes for proper duty calculation and trade statistics",
+            "properties": {
+                "cn_code_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "duty_rate_value": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "hs_code_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "taric_code_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "tariff_description_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "TariffClassification",
+            "type": "object"
+        },
+        "UniqueFacilityIdentifiers": {
+            "additionalProperties": false,
+            "description": "Unique facility identifiers for locations or buildings in the value chain",
+            "properties": {
+                "unique_facility_identifiers_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "UniqueFacilityIdentifiers",
+            "type": "object"
+        },
+        "UniqueOperatorIdentifier": {
+            "additionalProperties": false,
+            "description": "Unique operator identifier",
+            "properties": {
+                "unique_operator_identifier_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "UniqueOperatorIdentifier",
+            "type": "object"
+        },
+        "UniqueProductIdentifier": {
+            "additionalProperties": false,
+            "description": "Unique product identifier enabling web link to product passport",
+            "properties": {
+                "unique_product_identifier_value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "unique_product_identifier_value"
+            ],
+            "title": "UniqueProductIdentifier",
+            "type": "object"
+        },
+        "Website": {
+            "additionalProperties": false,
+            "description": "Website of the manufacturer",
+            "properties": {
+                "website_value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Website",
+            "type": "object"
+        }
+    },
+    "$id": "https://ce-rise-models.codeberg.page/product-profile/",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "product-profile",
+    "type": "object",
+    "version": "0.0.2"
+}
+

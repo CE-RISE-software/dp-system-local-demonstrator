@@ -1,0 +1,618 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema1: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix uam: <https://ce-rise-models.codeberg.page/usage-and-maintenance/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+uam:UsageAndMaintenance a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Root class for usage and maintenance data model" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class uam:SparePartsInformation ;
+            sh:description "Information about spare parts and replacements" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path uam:spare_parts_information ],
+        [ sh:class uam:MaintenanceRepairRelatedData ;
+            sh:description "Data about maintenance activities and repair history" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path uam:maintenance_repair_related_data ],
+        [ sh:class schema1:HowTo ;
+            sh:description "Instructions for proper product use and operation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path uam:use_instructions ],
+        [ sh:class schema1:MaintenanceSchedule ;
+            sh:description "Planned maintenance activities and intervals" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path uam:maintenance_schedule ],
+        [ sh:class schema1:Service ;
+            sh:description "Information about authorized service providers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path uam:service_provider_information ],
+        [ sh:class uam:UsageRelatedData ;
+            sh:description "Data about product usage patterns and metrics" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path uam:usage_related_data ],
+        [ sh:class uam:MaintenanceInstructions ;
+            sh:description "Instructions for product maintenance and servicing" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path uam:maintenance_instructions ] ;
+    sh:targetClass uam:UsageAndMaintenance .
+
+schema1:HowTo a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Instructions for proper product use and operation" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Common issues and troubleshooting steps" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path schema1:potentialAction ],
+        [ sh:datatype xsd:string ;
+            sh:description "Quick start instructions for basic operation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path schema1:text ],
+        [ sh:datatype xsd:string ;
+            sh:description "Uses that are prohibited or not recommended" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path uam:prohibited_uses ],
+        [ sh:datatype xsd:string ;
+            sh:description "Recommended operating parameters for optimal performance" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path uam:optimal_operating_parameters ],
+        [ sh:datatype xsd:string ;
+            sh:description "Safety precautions for product use" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path schema1:warning ],
+        [ sh:datatype xsd:string ;
+            sh:description "Training required for safe operation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path uam:training_requirements ],
+        [ sh:datatype xsd:string ;
+            sh:description "URL to the operating manual" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path schema1:url ] ;
+    sh:targetClass schema1:HowTo .
+
+schema1:MaintenanceSchedule a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Planned maintenance activities and intervals" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Schedule for mandatory inspections" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path uam:mandatory_inspections ],
+        [ sh:datatype xsd:string ;
+            sh:description "Conditions that trigger predictive maintenance" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path uam:predictive_maintenance_triggers ],
+        [ sh:datatype xsd:string ;
+            sh:description "Schedule for component replacements" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path uam:component_replacement_schedule ],
+        [ sh:datatype xsd:string ;
+            sh:description "Schedule for preventive maintenance activities" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path uam:preventive_maintenance_intervals ],
+        [ sh:datatype xsd:string ;
+            sh:description "Schedule for calibration activities" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path uam:calibration_schedule ] ;
+    sh:targetClass schema1:MaintenanceSchedule .
+
+schema1:Service a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Information about authorized service providers" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Available service contract options" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path schema1:offers ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Whether remote support is available" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path uam:remote_support_availability ],
+        [ sh:datatype xsd:string ;
+            sh:description "Contact number for service support" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path schema1:telephone ],
+        [ sh:datatype xsd:string ;
+            sh:description "Terms and conditions for warranty service" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path schema1:termsOfService ],
+        [ sh:datatype xsd:string ;
+            sh:description "List of authorized service centers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path schema1:provider ] ;
+    sh:targetClass schema1:Service .
+
+sosa:ObservationCollection a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Environmental and operational parameters during product use" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Level of vibration exposure during operation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path uam:vibration_exposure ],
+        [ sh:datatype xsd:string ;
+            sh:description "Typical temperature range during operation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path ssn:hasProperty ],
+        [ sh:datatype xsd:string ;
+            sh:description "Typical humidity range during operation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path ssn:hasProperty ],
+        [ sh:datatype xsd:string ;
+            sh:description "Description of typical environmental conditions" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path uam:environmental_conditions ],
+        [ sh:datatype xsd:string ;
+            sh:description "Type of location where product is typically operated (indoor, outdoor, mixed, industrial, residential, commercial)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path uam:operating_location_type ] ;
+    sh:targetClass sosa:ObservationCollection .
+
+uam:MaintenanceInstructions a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Instructions for product maintenance and servicing" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Checklists for maintenance inspections" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path uam:inspection_checklists ],
+        [ sh:datatype xsd:string ;
+            sh:description "Procedures for calibration" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path uam:calibration_procedures ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instructions for proper storage when not in use" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path uam:storage_instructions ],
+        [ sh:datatype xsd:string ;
+            sh:description "Lubrication points and requirements" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path uam:lubrication_requirements ],
+        [ sh:datatype xsd:string ;
+            sh:description "Procedures for routine maintenance tasks" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path uam:routine_maintenance_procedures ],
+        [ sh:datatype xsd:string ;
+            sh:description "Special tools required for maintenance" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path uam:special_tools_required ],
+        [ sh:datatype xsd:string ;
+            sh:description "Procedures for safe decommissioning" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path uam:decommissioning_procedures ],
+        [ sh:datatype xsd:string ;
+            sh:description "Safety requirements for maintenance activities" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path uam:maintenance_safety_requirements ],
+        [ sh:datatype xsd:string ;
+            sh:description "Instructions for cleaning the product" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path uam:cleaning_instructions ],
+        [ sh:datatype xsd:string ;
+            sh:description "URL to the maintenance manual" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path schema1:url ] ;
+    sh:targetClass uam:MaintenanceInstructions .
+
+uam:MaintenanceRepairRelatedData a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Container for maintenance and repair information" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class prov:Activity ;
+            sh:description "Record of completed maintenance activities" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path uam:maintenance_history ],
+        [ sh:class prov:Activity ;
+            sh:description "Record of repairs performed on the product" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path uam:repair_history ] ;
+    sh:targetClass uam:MaintenanceRepairRelatedData .
+
+uam:PerformanceTracking a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Product performance metrics over time" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:description "Rate of performance degradation over time" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path uam:performance_degradation_rate ],
+        [ sh:datatype xsd:float ;
+            sh:description "Average time between failures (MTBF)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path uam:mean_time_between_failures ],
+        [ sh:datatype xsd:float ;
+            sh:description "Percentage of time product is available for use" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path uam:availability_percentage ],
+        [ sh:datatype xsd:float ;
+            sh:description "Current operational efficiency compared to baseline" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path uam:current_efficiency ],
+        [ sh:datatype xsd:float ;
+            sh:description "Current reliability score based on failure rates" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path uam:reliability_score ] ;
+    sh:targetClass uam:PerformanceTracking .
+
+uam:SparePartsInformation a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Information about spare parts and replacements" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Information on how to order spare parts" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path uam:parts_ordering_information ],
+        [ sh:datatype xsd:string ;
+            sh:description "Information about interchangeable parts" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path uam:parts_interchangeability ],
+        [ sh:datatype xsd:string ;
+            sh:description "Information about spare parts availability" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gr:availability ],
+        [ sh:datatype xsd:string ;
+            sh:description "List of critical spare parts required" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gr:includes ],
+        [ sh:datatype xsd:string ;
+            sh:description "List of authorized parts suppliers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path gr:BusinessEntity ] ;
+    sh:targetClass uam:SparePartsInformation .
+
+uam:UsageMetrics a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Quantitative measurements of product usage" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "Number of times the product has been powered on" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path uam:power_on_cycles ],
+        [ sh:datatype xsd:float ;
+            sh:description "Total energy consumed during operation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path sosa:hasSimpleResult ],
+        [ sh:datatype xsd:float ;
+            sh:description "Total hours the product has been in operation" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sosa:hasSimpleResult ],
+        [ sh:datatype xsd:float ;
+            sh:description "Average hours of usage per day" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path uam:average_daily_usage ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of load/unload cycles (for applicable products)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path uam:load_cycles ],
+        [ sh:datatype xsd:string ;
+            sh:description "Level of usage intensity (light, moderate, heavy, continuous)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path uam:usage_intensity ],
+        [ sh:datatype xsd:float ;
+            sh:description "Total distance traveled (for mobile products)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path uam:distance_traveled ] ;
+    sh:targetClass uam:UsageMetrics .
+
+uam:UsagePatterns a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Patterns and behaviors in product usage" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Additional or alternative use cases" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path uam:secondary_use_cases ],
+        [ sh:datatype xsd:string ;
+            sh:description "Primary application or use case for the product" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path uam:primary_use_case ],
+        [ sh:datatype xsd:string ;
+            sh:description "Description of seasonal usage variations" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path uam:seasonal_variation ],
+        [ sh:datatype xsd:float ;
+            sh:description "Percentage of time product is idle" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path uam:idle_time_percentage ],
+        [ sh:datatype xsd:string ;
+            sh:description "Time periods of peak usage" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path uam:peak_usage_periods ] ;
+    sh:targetClass uam:UsagePatterns .
+
+uam:UsageRelatedData a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Container for product usage data and metrics" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class sosa:ObservationCollection ;
+            sh:description "Environmental and operational parameters during use" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path uam:operational_conditions ],
+        [ sh:class uam:UsagePatterns ;
+            sh:description "Patterns and behaviors in product usage" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path uam:usage_patterns ],
+        [ sh:class uam:PerformanceTracking ;
+            sh:description "Product performance metrics over time" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path uam:performance_tracking ],
+        [ sh:class uam:UsageMetrics ;
+            sh:description "Quantitative measurements of product usage" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path uam:usage_metrics ] ;
+    sh:targetClass uam:UsageRelatedData .
+
+prov:Activity a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Record of completed maintenance activities (event-based)",
+        "Record of repairs performed on the product (event-based)" ;
+    sh:ignoredProperties ( rdf:type ),
+        ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Type of maintenance performed (preventive, predictive, corrective, inspection, calibration)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path uam:maintenance_type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Identifier of technician who performed maintenance" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path prov:wasAssociatedWith ],
+        [ sh:datatype xsd:date ;
+            sh:description "Date when maintenance was performed" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path prov:atTime ],
+        [ sh:datatype xsd:string ;
+            sh:description "Assessment of maintenance effectiveness" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path uam:maintenance_effectiveness ],
+        [ sh:datatype xsd:date ;
+            sh:description "Date when repair was performed" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path prov:atTime ],
+        [ sh:datatype xsd:string ;
+            sh:description "Category of failure (mechanical, electrical, software, wear, misuse)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path uam:failure_category ],
+        [ sh:datatype xsd:float ;
+            sh:description "Time taken to complete the repair" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path uam:repair_duration ],
+        [ sh:datatype xsd:float ;
+            sh:description "Product downtime caused by the failure" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path uam:downtime_caused ],
+        [ sh:datatype xsd:float ;
+            sh:description "Cost of the repair" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path gr:hasCurrencyValue ],
+        [ sh:datatype xsd:string ;
+            sh:description "Description of maintenance activities performed" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "List of parts replaced during maintenance" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path uam:parts_replaced ],
+        [ sh:datatype xsd:string ;
+            sh:description "Description of the failure or problem" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Assessment of repair effectiveness" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path uam:repair_effectiveness ],
+        [ sh:datatype xsd:string ;
+            sh:description "Organization that performed the maintenance" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path prov:wasAttributedTo ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Whether repair was covered under warranty" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path uam:warranty_coverage ],
+        [ sh:datatype xsd:string ;
+            sh:description "Analysis of the root cause of failure" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path uam:root_cause_analysis ],
+        [ sh:datatype xsd:date ;
+            sh:description "Date when next maintenance is due" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path uam:next_maintenance_due ],
+        [ sh:datatype xsd:float ;
+            sh:description "Cost of the maintenance activity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path gr:hasCurrencyValue ],
+        [ sh:datatype xsd:string ;
+            sh:description "List of components replaced during repair" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path uam:components_replaced ],
+        [ sh:datatype xsd:float ;
+            sh:description "Time taken to complete the maintenance" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path uam:maintenance_duration ],
+        [ sh:datatype xsd:string ;
+            sh:description "Description of repair actions performed" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path uam:repair_actions_taken ] ;
+    sh:targetClass prov:Activity .
+
+

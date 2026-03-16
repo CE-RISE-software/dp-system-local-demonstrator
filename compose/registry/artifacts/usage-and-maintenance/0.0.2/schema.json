@@ -1,0 +1,873 @@
+{
+    "$defs": {
+        "MaintenanceHistory": {
+            "additionalProperties": false,
+            "description": "Record of completed maintenance activities (event-based)",
+            "properties": {
+                "maintenance_cost": {
+                    "description": "Cost of the maintenance activity",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "maintenance_date": {
+                    "description": "Date when maintenance was performed",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "maintenance_description": {
+                    "description": "Description of maintenance activities performed",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "maintenance_duration": {
+                    "description": "Time taken to complete the maintenance",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "maintenance_effectiveness": {
+                    "description": "Assessment of maintenance effectiveness",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "maintenance_type": {
+                    "description": "Type of maintenance performed (preventive, predictive, corrective, inspection, calibration)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "next_maintenance_due": {
+                    "description": "Date when next maintenance is due",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "parts_replaced": {
+                    "description": "List of parts replaced during maintenance",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "service_organization": {
+                    "description": "Organization that performed the maintenance",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "technician_id": {
+                    "description": "Identifier of technician who performed maintenance",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MaintenanceHistory",
+            "type": "object"
+        },
+        "MaintenanceInstructions": {
+            "additionalProperties": false,
+            "description": "Instructions for product maintenance and servicing",
+            "properties": {
+                "calibration_procedures": {
+                    "description": "Procedures for calibration",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cleaning_instructions": {
+                    "description": "Instructions for cleaning the product",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "decommissioning_procedures": {
+                    "description": "Procedures for safe decommissioning",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "inspection_checklists": {
+                    "description": "Checklists for maintenance inspections",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "lubrication_requirements": {
+                    "description": "Lubrication points and requirements",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "maintenance_manual_url": {
+                    "description": "URL to the maintenance manual",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "maintenance_safety_requirements": {
+                    "description": "Safety requirements for maintenance activities",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "routine_maintenance_procedures": {
+                    "description": "Procedures for routine maintenance tasks",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "special_tools_required": {
+                    "description": "Special tools required for maintenance",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "storage_instructions": {
+                    "description": "Instructions for proper storage when not in use",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MaintenanceInstructions",
+            "type": "object"
+        },
+        "MaintenanceRepairRelatedData": {
+            "additionalProperties": false,
+            "description": "Container for maintenance and repair information",
+            "properties": {
+                "maintenance_history": {
+                    "description": "Record of completed maintenance activities",
+                    "items": {
+                        "$ref": "#/$defs/MaintenanceHistory"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "repair_history": {
+                    "description": "Record of repairs performed on the product",
+                    "items": {
+                        "$ref": "#/$defs/RepairHistory"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MaintenanceRepairRelatedData",
+            "type": "object"
+        },
+        "MaintenanceSchedule": {
+            "additionalProperties": false,
+            "description": "Planned maintenance activities and intervals",
+            "properties": {
+                "calibration_schedule": {
+                    "description": "Schedule for calibration activities",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "component_replacement_schedule": {
+                    "description": "Schedule for component replacements",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "mandatory_inspections": {
+                    "description": "Schedule for mandatory inspections",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "predictive_maintenance_triggers": {
+                    "description": "Conditions that trigger predictive maintenance",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "preventive_maintenance_intervals": {
+                    "description": "Schedule for preventive maintenance activities",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MaintenanceSchedule",
+            "type": "object"
+        },
+        "OperationalConditions": {
+            "additionalProperties": false,
+            "description": "Environmental and operational parameters during product use",
+            "properties": {
+                "environmental_conditions": {
+                    "description": "Description of typical environmental conditions",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "operating_location_type": {
+                    "description": "Type of location where product is typically operated (indoor, outdoor, mixed, industrial, residential, commercial)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "typical_humidity_range": {
+                    "description": "Typical humidity range during operation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "typical_operating_temperature": {
+                    "description": "Typical temperature range during operation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vibration_exposure": {
+                    "description": "Level of vibration exposure during operation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "OperationalConditions",
+            "type": "object"
+        },
+        "PerformanceTracking": {
+            "additionalProperties": false,
+            "description": "Product performance metrics over time",
+            "properties": {
+                "availability_percentage": {
+                    "description": "Percentage of time product is available for use",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "current_efficiency": {
+                    "description": "Current operational efficiency compared to baseline",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "mean_time_between_failures": {
+                    "description": "Average time between failures (MTBF)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "performance_degradation_rate": {
+                    "description": "Rate of performance degradation over time",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "reliability_score": {
+                    "description": "Current reliability score based on failure rates",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "title": "PerformanceTracking",
+            "type": "object"
+        },
+        "RepairHistory": {
+            "additionalProperties": false,
+            "description": "Record of repairs performed on the product (event-based)",
+            "properties": {
+                "components_replaced": {
+                    "description": "List of components replaced during repair",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "downtime_caused": {
+                    "description": "Product downtime caused by the failure",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "failure_category": {
+                    "description": "Category of failure (mechanical, electrical, software, wear, misuse)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "failure_description": {
+                    "description": "Description of the failure or problem",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "repair_actions_taken": {
+                    "description": "Description of repair actions performed",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "repair_cost": {
+                    "description": "Cost of the repair",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "repair_date": {
+                    "description": "Date when repair was performed",
+                    "format": "date",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "repair_duration": {
+                    "description": "Time taken to complete the repair",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "repair_effectiveness": {
+                    "description": "Assessment of repair effectiveness",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "root_cause_analysis": {
+                    "description": "Analysis of the root cause of failure",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "warranty_coverage": {
+                    "description": "Whether repair was covered under warranty",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "title": "RepairHistory",
+            "type": "object"
+        },
+        "ServiceProviderInformation": {
+            "additionalProperties": false,
+            "description": "Information about authorized service providers",
+            "properties": {
+                "authorized_service_centers": {
+                    "description": "List of authorized service centers",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "remote_support_availability": {
+                    "description": "Whether remote support is available",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "service_contract_options": {
+                    "description": "Available service contract options",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "service_hotline": {
+                    "description": "Contact number for service support",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "warranty_service_terms": {
+                    "description": "Terms and conditions for warranty service",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ServiceProviderInformation",
+            "type": "object"
+        },
+        "SparePartsInformation": {
+            "additionalProperties": false,
+            "description": "Information about spare parts and replacements",
+            "properties": {
+                "critical_spare_parts_list": {
+                    "description": "List of critical spare parts required",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "parts_interchangeability": {
+                    "description": "Information about interchangeable parts",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "parts_ordering_information": {
+                    "description": "Information on how to order spare parts",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "parts_suppliers": {
+                    "description": "List of authorized parts suppliers",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "spare_parts_availability": {
+                    "description": "Information about spare parts availability",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "SparePartsInformation",
+            "type": "object"
+        },
+        "UsageAndMaintenance": {
+            "additionalProperties": false,
+            "description": "Root class for usage and maintenance data model",
+            "properties": {
+                "maintenance_instructions": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MaintenanceInstructions"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Instructions for product maintenance and servicing"
+                },
+                "maintenance_repair_related_data": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MaintenanceRepairRelatedData"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Data about maintenance activities and repair history"
+                },
+                "maintenance_schedule": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MaintenanceSchedule"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Planned maintenance activities and intervals"
+                },
+                "service_provider_information": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ServiceProviderInformation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Information about authorized service providers"
+                },
+                "spare_parts_information": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SparePartsInformation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Information about spare parts and replacements"
+                },
+                "usage_related_data": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/UsageRelatedData"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Data about product usage patterns and metrics"
+                },
+                "use_instructions": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/UseInstructions"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Instructions for proper product use and operation"
+                }
+            },
+            "title": "UsageAndMaintenance",
+            "type": "object"
+        },
+        "UsageMetrics": {
+            "additionalProperties": false,
+            "description": "Quantitative measurements of product usage",
+            "properties": {
+                "average_daily_usage": {
+                    "description": "Average hours of usage per day",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "distance_traveled": {
+                    "description": "Total distance traveled (for mobile products)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "energy_consumption": {
+                    "description": "Total energy consumed during operation",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "load_cycles": {
+                    "description": "Number of load/unload cycles (for applicable products)",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "power_on_cycles": {
+                    "description": "Number of times the product has been powered on",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "total_operating_hours": {
+                    "description": "Total hours the product has been in operation",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "usage_intensity": {
+                    "description": "Level of usage intensity (light, moderate, heavy, continuous)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "UsageMetrics",
+            "type": "object"
+        },
+        "UsagePatterns": {
+            "additionalProperties": false,
+            "description": "Patterns and behaviors in product usage",
+            "properties": {
+                "idle_time_percentage": {
+                    "description": "Percentage of time product is idle",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "peak_usage_periods": {
+                    "description": "Time periods of peak usage",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primary_use_case": {
+                    "description": "Primary application or use case for the product",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "seasonal_variation": {
+                    "description": "Description of seasonal usage variations",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "secondary_use_cases": {
+                    "description": "Additional or alternative use cases",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "UsagePatterns",
+            "type": "object"
+        },
+        "UsageRelatedData": {
+            "additionalProperties": false,
+            "description": "Container for product usage data and metrics",
+            "properties": {
+                "operational_conditions": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/OperationalConditions"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Environmental and operational parameters during use"
+                },
+                "performance_tracking": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PerformanceTracking"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Product performance metrics over time"
+                },
+                "usage_metrics": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/UsageMetrics"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Quantitative measurements of product usage"
+                },
+                "usage_patterns": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/UsagePatterns"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Patterns and behaviors in product usage"
+                }
+            },
+            "title": "UsageRelatedData",
+            "type": "object"
+        },
+        "UseInstructions": {
+            "additionalProperties": false,
+            "description": "Instructions for proper product use and operation",
+            "properties": {
+                "operating_manual_url": {
+                    "description": "URL to the operating manual",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "optimal_operating_parameters": {
+                    "description": "Recommended operating parameters for optimal performance",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "prohibited_uses": {
+                    "description": "Uses that are prohibited or not recommended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "quick_start_guide": {
+                    "description": "Quick start instructions for basic operation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "safety_precautions": {
+                    "description": "Safety precautions for product use",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "training_requirements": {
+                    "description": "Training required for safe operation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "troubleshooting_guide": {
+                    "description": "Common issues and troubleshooting steps",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "UseInstructions",
+            "type": "object"
+        }
+    },
+    "$id": "https://ce-rise-models.codeberg.page/usage-and-maintenance/",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "description": "Root class for usage and maintenance data model",
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "maintenance_instructions": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/MaintenanceInstructions"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Instructions for product maintenance and servicing"
+        },
+        "maintenance_repair_related_data": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/MaintenanceRepairRelatedData"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Data about maintenance activities and repair history"
+        },
+        "maintenance_schedule": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/MaintenanceSchedule"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Planned maintenance activities and intervals"
+        },
+        "service_provider_information": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/ServiceProviderInformation"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Information about authorized service providers"
+        },
+        "spare_parts_information": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/SparePartsInformation"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Information about spare parts and replacements"
+        },
+        "usage_related_data": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/UsageRelatedData"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Data about product usage patterns and metrics"
+        },
+        "use_instructions": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/UseInstructions"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Instructions for proper product use and operation"
+        }
+    },
+    "title": "usage-and-maintenance",
+    "type": "object",
+    "version": "0.0.1"
+}
+
