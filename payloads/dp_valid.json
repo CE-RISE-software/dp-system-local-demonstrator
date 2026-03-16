@@ -1,0 +1,124 @@
+{
+  "record_scope": "product",
+  "metadata_versioning": {
+    "metadata_created": "2026-03-16T12:00:00Z",
+    "metadata_modified": "2026-03-16T12:00:00Z",
+    "metadata_schema_version": "0.0.2",
+    "metadata_language": "en",
+    "compatibility_level": "1.x"
+  },
+  "applied_schemas": [
+    {
+      "schema_reference": {
+        "schema_identifier": "dp-record-metadata",
+        "schema_version": "0.0.2",
+        "schema_url": "https://codeberg.org/CE-RISE-models/dp-record-metadata/raw/tag/pages-v0.0.2/generated/schema.json"
+      },
+      "schema_usage": {
+        "schema_role": "core-identity"
+      },
+      "composition_info": {
+        "composition_method": "nested",
+        "data_location": "$"
+      }
+    },
+    {
+      "schema_reference": {
+        "schema_identifier": "product-profile",
+        "schema_version": "0.0.3",
+        "schema_url": "https://codeberg.org/CE-RISE-models/product-profile/raw/tag/pages-v0.0.3/generated/schema.json"
+      },
+      "schema_usage": {
+        "schema_role": "product-identity"
+      },
+      "composition_info": {
+        "composition_method": "nested",
+        "data_location": "$.product_profile"
+      }
+    },
+    {
+      "schema_reference": {
+        "schema_identifier": "usage-and-maintenance",
+        "schema_version": "0.0.2",
+        "schema_url": "https://codeberg.org/CE-RISE-models/usage-and-maintenance/raw/tag/pages-v0.0.2/generated/schema.json"
+      },
+      "schema_usage": {
+        "schema_role": "usage-and-maintenance"
+      },
+      "composition_info": {
+        "composition_method": "nested",
+        "data_location": "$.usage_and_maintenance"
+      }
+    }
+  ],
+  "product_profile": {
+    "unique_product_identifier": {
+      "unique_product_identifier_value": "urn:ce-rise:product:aikia-liden-chair-001"
+    },
+    "name": {
+      "name_value": "AIKIA LIDEN Chair"
+    },
+    "registered_trade_name_or_trade_mark": {
+      "registered_trade_name_or_trade_mark_value": "AIKIA"
+    },
+    "product_type": {
+      "type_value": "plastic chair"
+    },
+    "material_identification": {
+      "materials_composition_value": "Polypropylene shell with steel fasteners"
+    },
+    "physical_attributes": {
+      "weight_value": "3.8 kg",
+      "dimensions_value": "79 x 46 x 52 cm"
+    },
+    "manufacturers_information": {
+      "name_value": "AIKIA Home Systems"
+    },
+    "general_product_information": {
+      "gtin_value": "12345678901234",
+      "lot_batch_number_value": "BATCH-CHAIR-2026-03"
+    }
+  },
+  "usage_and_maintenance": {
+    "use_instructions": {
+      "quick_start_guide": "Unpack, unfold legs, place on level indoor floor, and verify all feet touch the floor evenly before use.",
+      "safety_precautions": "Do not stand on the chair. Keep away from open flame and high heat sources.",
+      "operating_manual_url": "https://example.invalid/demo/aikia-liden-chair/use-guide"
+    },
+    "usage_related_data": {
+      "usage_metrics": {
+        "average_daily_usage": "6 hours",
+        "usage_intensity": "medium"
+      },
+      "usage_patterns": {
+        "primary_use_case": "Indoor household seating",
+        "secondary_use_cases": "Dining chair, desk chair"
+      },
+      "operational_conditions": {
+        "operating_location_type": "indoor",
+        "typical_operating_temperature": "15-30 C",
+        "typical_humidity_range": "30-70%"
+      },
+      "performance_tracking": {
+        "availability_percentage": "99",
+        "reliability_score": "high"
+      }
+    },
+    "maintenance_instructions": {
+      "cleaning_instructions": "Wipe with a soft damp cloth and mild detergent. Dry immediately after cleaning.",
+      "routine_maintenance_procedures": "Inspect legs and fasteners every 6 months and tighten if loosened during use.",
+      "storage_instructions": "Store indoors in a dry environment away from direct sunlight when not in use."
+    },
+    "maintenance_schedule": {
+      "preventive_maintenance_intervals": "Visual inspection every 6 months"
+    },
+    "spare_parts_information": {
+      "critical_spare_parts_list": "Replacement feet pads, replacement fastener set",
+      "spare_parts_availability": "Available on request for 5 years after purchase"
+    },
+    "service_provider_information": {
+      "service_hotline": "+00-000-000-0000",
+      "warranty_service_terms": "24-month limited warranty for manufacturing defects"
+    }
+  }
+}

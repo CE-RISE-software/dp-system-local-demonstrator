@@ -1,0 +1,23 @@
+{
+  "record_scope": "furniture",
+  "metadata_versioning": {
+    "metadata_created": "2026-03-16T12:00:00Z",
+    "metadata_schema_version": "0.0.2"
+  },
+  "applied_schemas": [
+    {
+      "schema_reference": {
+        "schema_identifier": "dp-record-metadata",
+        "schema_version": "0.0.2"
+      }
+    }
+  ],
+  "product_profile": {
+    "unique_product_identifier": {
+      "unique_product_identifier_value": "urn:ce-rise:product:aikia-liden-chair-001"
+    },
+    "name": {
+      "name_value": "AIKIA LIDEN Chair"
+    }
+  }
+}
