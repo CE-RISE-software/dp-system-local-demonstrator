@@ -1,5 +1,7 @@
 # CE-RISE Digital Passport System: Local Demonstrator
 
+[![DOI](https://zenodo.org/badge/DOI/TOBEOBTAINED.svg)](https://doi.org/TOBEOBTAINED)
+
 This repository provides a local-only CE-RISE Digital Passport demonstrator adapted from the
 `dp-system-gitops-template` structure and aimed at a deterministic Docker-only workflow.
 
