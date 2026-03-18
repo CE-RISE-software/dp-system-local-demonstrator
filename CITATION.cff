@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: Project template for software developed within the CE-RISE Horizon Europe project
+title: CE-RISE Digital Passport System: Local Demonstrator
 type: software
 doi: xxx_to_be_obtained_xxx
 authors:
@@ -12,10 +12,9 @@ identifiers:
   - type: doi
     value: xxx_to_be_obtained_xxx
     description: This DOI represents all software versions.
-repository-code: 'https://codeberg.org/CE-RISE-software/template-software'
-url: 'https://ce-rise-software.codeberg.page/template-software/'
+repository-code: 'https://codeberg.org/CE-RISE-software/dp-system-local-demonstrator'
 abstract: >-
-  Project template for data models developed within the CE-RISE Horizon Europe project.
+  Local, Docker-only demonstrator for the CE-RISE Digital Passport system, running the hex-core-service with a reference backend and scripted flows to authenticate, upload/validate a passport record, persist it, and log in again to read it back.
 keywords:
   - CE-RISE
   - Open Source

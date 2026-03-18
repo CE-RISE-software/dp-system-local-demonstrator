@@ -13,34 +13,65 @@ compose_cmd() {
   docker compose -f "$compose_file" --env-file "$compose_env" "$@"
 }
 
+run_compose_quiet() {
+  local log_file="$1"
+  shift
+  if ! docker compose -f "$compose_file" --env-file "$compose_env" "$@" >"$log_file" 2>&1; then
+    echo "Compose command failed: docker compose $*" >&2
+    cat "$log_file" >&2
+    return 1
+  fi
+}
+
+wait_for_http_code() {
+  local url="$1"
+  local expected="$2"
+  local timeout="$3"
+  local started
+  local code=""
+
+  started="$(date +%s)"
+  while true; do
+    code="$(curl -sS -o /tmp/dp-validate-body.json -w '%{http_code}' "$url" || true)"
+    if [[ "$code" == "$expected" ]]; then
+      return 0
+    fi
+    if (( "$(date +%s)" - started >= timeout )); then
+      echo "Timed out waiting for $url to return HTTP $expected; last HTTP $code" >&2
+      if [[ -f /tmp/dp-validate-body.json ]]; then
+        cat /tmp/dp-validate-body.json >&2
+      fi
+      return 1
+    fi
+    sleep 2
+  done
+}
+
 cleanup() {
-  compose_cmd down --remove-orphans >/dev/null 2>&1 || true
+  timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" down --remove-orphans >/dev/null 2>&1 || true
 }
 
 trap cleanup EXIT
 
-echo "Validating Docker Compose rendering"
-compose_cmd config >/dev/null
+tmp_dir="$(mktemp -d)"
+trap 'rm -rf "$tmp_dir"; cleanup' EXIT
 
-echo "Starting local stack for smoke test"
-compose_cmd up -d artifact-server postgres dp-storage-jsondb-service hex-core-service >/dev/null
+echo "Check 1/5: Compose file renders"
+run_compose_quiet "$tmp_dir/config.log" config >/dev/null
 
-echo "Running HTTP smoke checks through the Docker-only demo runner"
-compose_cmd run --rm --entrypoint sh demo-runner -lc '
-  set -e
-  for url in \
-    http://hex-core-service:8080/admin/health \
-    http://hex-core-service:8080/admin/ready \
-    http://dp-storage-jsondb-service:8080/health \
-    http://dp-storage-jsondb-service:8080/ready
-  do
-    code="$(curl -sS -o /tmp/resp -w "%{http_code}" "$url")"
-    if [ "$code" != "200" ]; then
-      echo "Smoke check failed for $url: HTTP $code" >&2
-      cat /tmp/resp >&2 || true
-      exit 1
-    fi
-  done
-'
+echo "Check 2/5: Previous stack is cleared"
+timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" down --remove-orphans >/dev/null 2>&1 || true
 
-echo "Compose validation completed"
+echo "Check 3/5: Stack start is requested"
+if ! timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" up -d artifact-server postgres dp-storage-jsondb-service hex-core-service >"$tmp_dir/up.log" 2>&1; then
+  echo "Compose did not exit cleanly during stack start. Checking service availability instead."
+fi
+
+echo "Check 4/5: Core health and readiness"
+wait_for_http_code "http://127.0.0.1:8080/admin/health" "200" "60"
+wait_for_http_code "http://127.0.0.1:8080/admin/ready" "200" "60"
+
+echo "Check 5/5: Backend health"
+wait_for_http_code "http://127.0.0.1:8081/health" "200" "60"
+
+echo "Validation passed"

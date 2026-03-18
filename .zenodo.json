@@ -1,35 +1,30 @@
 {
-  "title": "Project template for software developed within the CE-RISE Horizon Europe project",
-  "description": "Project template for data models developed within the CE-RISE Horizon Europe project.",
-  "license": "EUPL-1.2",
-  "upload_type": "software",
-  "creators": [
-    {
-      "name": "Boero, Riccardo",
-      "affiliation": "NILU",
-      "orcid": "0000-0002-7468-9096"
-    }
-  ],
-  "keywords": [
-    "CE-RISE",
-    "Open Source",
-    "Open Science",
-    "Digital Product Passport",
-    "Digital Material Passport"
-  ],
-  "notes": "v0.0.1 - Initial sketch of project template.",
-  "communities": [
-    { "identifier": "ce-rise" },
-    { "identifier": "impact" }
-  ],
-  "grants": [
-    { "id": "101092281" }
-  ],
-  "related_identifiers": [
-    {
-      "identifier": "https://codeberg.org/CE-RISE-software/template-software",
-      "relation": "isSupplementTo",
-      "resource_type": "software"
-    }
-  ]
+    "title": "CE-RISE Digital Passport System: Local Demonstrator",
+    "description": "Local, Docker-only demonstrator for the CE-RISE Digital Passport system, running the hex-core-service with a reference backend and scripted flows to authenticate, upload/validate a passport record, persist it, and log in again to read it back.",
+    "license": "EUPL-1.2",
+    "upload_type": "software",
+    "creators": [
+        {
+            "name": "Boero, Riccardo",
+            "affiliation": "NILU",
+            "orcid": "0000-0002-7468-9096"
+        }
+    ],
+    "keywords": [
+        "CE-RISE",
+        "Open Source",
+        "Open Science",
+        "Digital Product Passport",
+        "Digital Material Passport"
+    ],
+    "notes": "v0.0.1 - Initial demonstration.",
+    "communities": [{ "identifier": "ce-rise" }, { "identifier": "impact" }],
+    "grants": [{ "id": "101092281" }],
+    "related_identifiers": [
+        {
+            "identifier": "https://codeberg.org/CE-RISE-software/dp-system-local-demonstrator",
+            "relation": "isSupplementTo",
+            "resource_type": "software"
+        }
+    ]
 }

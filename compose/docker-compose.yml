@@ -38,11 +38,6 @@ services:
             retries: 20
 
     dp-storage-jsondb-service:
-        build:
-            context: .
-            dockerfile: images/dp-storage-jsondb-service.Dockerfile
-            args:
-                DP_STORAGE_BASE_IMAGE: ${DP_STORAGE_BASE_IMAGE}
         image: ${DP_STORAGE_IMAGE}
         restart: unless-stopped
         depends_on:
@@ -73,9 +68,6 @@ services:
             retries: 20
 
     hex-core-service:
-        build:
-            context: ..
-            dockerfile: compose/images/hex-core-service.Dockerfile
         image: ${HEX_CORE_IMAGE}
         restart: unless-stopped
         depends_on:

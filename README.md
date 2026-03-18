@@ -1,4 +1,4 @@
-# CE-RISE DP System Local Demonstrator
+# CE-RISE Digital Passport System: Local Demonstrator
 
 This repository provides a local-only CE-RISE Digital Passport demonstrator adapted from the
 `dp-system-gitops-template` structure and aimed at a deterministic Docker-only workflow.
@@ -12,9 +12,6 @@ The demo stack runs:
   - `dp-record-metadata`
   - `product-profile`
   - `usage-and-maintenance`
-
-The core service image is built locally from a vendored upstream source snapshot so the demonstrator
-tracks the current model-operation routing behavior rather than an older published image variant.
 
 The scripted demonstration uses a fictional chair product, `AIKIA LIDEN Chair`, and walks through:
 
@@ -36,7 +33,6 @@ Docker only.
 
 ```bash
 cp compose/.env.example compose/.env
-make up
 make demo
 ```
 
@@ -44,9 +40,10 @@ Without `make`:
 
 ```bash
 cp compose/.env.example compose/.env
-./demo.sh up
 ./demo.sh demo
 ```
+
+`make demo` starts the stack, runs the full pipeline, and brings the stack down automatically at the end.
 
 ## Auth Handling
 
@@ -56,7 +53,7 @@ Default mode is local no-auth:
 - `dp-storage-jsondb-service` uses `AUTH_MODE=disabled`
 
 This keeps the demonstrator Docker-only and deterministic. The demo still shows login/logout steps by
-creating, dropping, and recreating a local demo session in the runner container. Record recovery after
+creating, dropping, and recreating a local demo session in the scripted flow. Record recovery after
 "re-login" still works because the persisted data is stored in PostgreSQL and queried again through the core.
 
 ## Repo Layout
@@ -78,7 +75,7 @@ make clean
 make validate
 ```
 
-Equivalent wrapper commands:
+Equivalent non-`make` wrapper commands:
 
 ```bash
 ./demo.sh up
@@ -87,6 +84,22 @@ Equivalent wrapper commands:
 ./demo.sh clean
 ./demo.sh validate
 ```
+
+Direct stack-management commands with `docker compose`:
+
+```bash
+docker compose -f compose/docker-compose.yml --env-file compose/.env up -d artifact-server postgres dp-storage-jsondb-service hex-core-service
+docker compose -f compose/docker-compose.yml --env-file compose/.env down --remove-orphans
+docker compose -f compose/docker-compose.yml --env-file compose/.env down --remove-orphans --volumes
+docker compose -f compose/docker-compose.yml --env-file compose/.env ps
+docker compose -f compose/docker-compose.yml --env-file compose/.env logs -f
+```
+
+Command behavior:
+
+- `make demo` or `./demo.sh demo` runs the pipeline and then shuts the stack down automatically
+- `make validate` or `./demo.sh validate` runs smoke checks and then shuts the stack down automatically
+- `make up` or `./demo.sh up` leaves the stack running for inspection
 
 ## Payload Modeling
 
@@ -138,6 +151,7 @@ make clean
 - Core not ready: inspect `hex-core-service` logs and confirm the artifact server is healthy.
 - Backend not ready: inspect `dp-storage-jsondb-service` and `postgres` logs.
 - Invalid payload passes unexpectedly: verify the demo is targeting `dp-record-metadata` `0.0.2` and that the local vendored schema files are mounted.
+- On hosts using `podman-compose` through `docker compose`, the stack start command may return non-zero even when the services do come up; the validation and demo scripts therefore judge success by actual service availability.
 
 ## License
 
