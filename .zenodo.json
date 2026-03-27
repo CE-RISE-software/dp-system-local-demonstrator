@@ -17,7 +17,7 @@
         "Digital Product Passport",
         "Digital Material Passport"
     ],
-    "notes": "v0.0.1 - Initial demonstration.",
+    "notes": "v0.0.2 - Fixes ot align with core service v0.0.9.",
     "communities": [{ "identifier": "ce-rise" }, { "identifier": "impact" }],
     "grants": [{ "id": "101092281" }],
     "related_identifiers": [

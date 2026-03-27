@@ -68,8 +68,8 @@ if ! timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" up
 fi
 
 echo "Check 4/5: Core health and readiness"
-wait_for_http_code "http://127.0.0.1:8080/admin/health" "200" "60"
 wait_for_http_code "http://127.0.0.1:8080/admin/ready" "200" "60"
+wait_for_http_code "http://127.0.0.1:8080/admin/version" "200" "60"
 
 echo "Check 5/5: Backend health"
 wait_for_http_code "http://127.0.0.1:8081/health" "200" "60"

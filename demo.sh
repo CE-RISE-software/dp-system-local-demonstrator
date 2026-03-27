@@ -71,9 +71,9 @@ run_demo_pipeline() {
 
   echo
   echo "== Step 1: Wait for local stack =="
-  wait_for_http_code "$base_url/admin/health" "200" "60"
   wait_for_http_code "$base_url/admin/ready" "200" "60"
-  echo "hex-core-service is healthy and ready."
+  wait_for_http_code "$base_url/admin/version" "200" "60"
+  echo "hex-core-service is ready."
 
   echo
   echo "== Step 2: Login in no-auth demo mode =="

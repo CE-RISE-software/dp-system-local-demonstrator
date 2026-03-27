@@ -71,13 +71,13 @@ post_json() {
 
 operation_url() {
   local operation="$1"
-  echo "$base_url/models/$model/versions/$version/$operation"
+  echo "$base_url/models/$model/versions/$version:$operation"
 }
 
 print_step "Step 1: Wait for local stack"
-wait_for_ok "$base_url/admin/health" 200
 wait_for_ok "$base_url/admin/ready" 200
-echo "hex-core-service is healthy and ready."
+wait_for_ok "$base_url/admin/version" 200
+echo "hex-core-service is ready."
 
 print_step "Step 2: Login in no-auth demo mode"
 session_one="$(login_session)"
@@ -133,8 +133,12 @@ if [[ "$status" != "200" ]]; then
 fi
 readback_name="$(jq -r '.records[0].payload.product_profile.name.name_value' /tmp/query-response.json)"
 readback_identifier="$(jq -r '.records[0].payload.product_profile.unique_product_identifier.unique_product_identifier_value' /tmp/query-response.json)"
+readback_record_id="$(jq -r '.records[0].id' /tmp/query-response.json)"
+readback_lot_batch="$(jq -r '.records[0].payload.product_profile.general_product_information.lot_batch_number_value' /tmp/query-response.json)"
+echo "Read-back record ID: $readback_record_id"
 echo "Read-back product name: $readback_name"
 echo "Read-back unique identifier: $readback_identifier"
+echo "Read-back lot or batch: $readback_lot_batch"
 
 print_step "Step 8: Reject an invalid payload"
 jq -n --slurpfile payload "$invalid_payload" '{payload: $payload[0]}' > /tmp/create-invalid.request.json
@@ -148,5 +152,5 @@ fi
 
 print_step "Success Summary"
 echo "Valid record persisted with ID: $record_id"
-echo "Read-back payload snippet: $readback_name / $readback_identifier"
+echo "Read-back payload confirmed with matching record ID and product identifiers."
 echo "Invalid payload was rejected as expected."

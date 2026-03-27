@@ -3,21 +3,18 @@
         {
             "model": "dp-record-metadata",
             "version": "0.0.2",
-            "route_url": "http://artifact-server/models/dp-record-metadata/0.0.2/route.json",
             "schema_url": "http://artifact-server/models/dp-record-metadata/0.0.2/schema.json",
             "shacl_url": "http://artifact-server/models/dp-record-metadata/0.0.2/shacl.ttl"
         },
         {
             "model": "product-profile",
             "version": "0.0.3",
-            "route_url": "http://artifact-server/models/product-profile/0.0.3/route.json",
             "schema_url": "http://artifact-server/models/product-profile/0.0.3/schema.json",
             "shacl_url": "http://artifact-server/models/product-profile/0.0.3/shacl.ttl"
         },
         {
             "model": "usage-and-maintenance",
             "version": "0.0.2",
-            "route_url": "http://artifact-server/models/usage-and-maintenance/0.0.2/route.json",
             "schema_url": "http://artifact-server/models/usage-and-maintenance/0.0.2/schema.json",
             "shacl_url": "http://artifact-server/models/usage-and-maintenance/0.0.2/shacl.ttl"
         }

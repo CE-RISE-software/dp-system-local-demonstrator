@@ -10,7 +10,7 @@ services:
             test:
                 [
                     "CMD-SHELL",
-                    "wget -q -O /dev/null http://127.0.0.1/models/dp-record-metadata/0.0.2/route.json",
+                    "wget -q -O /dev/null http://127.0.0.1/models/dp-record-metadata/0.0.2/schema.json",
                 ]
             interval: 5s
             timeout: 5s
