@@ -1,0 +1,166 @@
+{
+  "model_version": "0.0.5",
+  "payload": {
+    "id": "leveto-t14-eco-refurbish-001",
+    "timestamp": "2026-04-15T12:20:00Z",
+    "model_version": "0.0.5",
+    "indicator_specification_id": "REfurbish_Laptop",
+    "product_info": {
+      "product_category": "Laptop",
+      "manufacturer": "Leveto",
+      "model": "T14 Eco",
+      "serial_number": "LVT-T14E-001"
+    },
+    "parameter_assessments": [
+      {
+        "parameter_id": "P1_disassembly",
+        "question_answers": [
+          {"question_id": "Q1.1", "selected_answer_id": "refurb_dis_steps_2_to_5"},
+          {"question_id": "Q1.2", "selected_answer_id": "refurb_dis_steps_2_to_5"},
+          {"question_id": "Q1.3", "selected_answer_id": "refurb_dis_steps_2_to_5"},
+          {"question_id": "Q1.4", "selected_answer_id": "refurb_dis_steps_2_to_5"},
+          {"question_id": "Q1.5", "selected_answer_id": "refurb_dis_steps_2_to_5"},
+          {"question_id": "Q1.6", "selected_answer_id": "refurb_dis_steps_2_to_5"},
+          {"question_id": "Q1.7", "selected_answer_id": "refurb_dis_steps_2_to_5"},
+          {"question_id": "Q1.8", "selected_answer_id": "refurb_dis_steps_2_to_5"},
+          {"question_id": "Q1.9", "selected_answer_id": "refurb_dis_steps_2_to_5"},
+          {"question_id": "Q1.10", "selected_answer_id": "refurb_dis_steps_2_to_5"}
+        ]
+      },
+      {
+        "parameter_id": "P1_fasteners",
+        "question_answers": [
+          {"question_id": "Q1.11", "selected_answer_id": "refurb_fastener_reusable_removable"},
+          {"question_id": "Q1.12", "selected_answer_id": "refurb_fastener_reusable_removable"},
+          {"question_id": "Q1.13", "selected_answer_id": "refurb_fastener_reusable_removable"},
+          {"question_id": "Q1.14", "selected_answer_id": "refurb_fastener_reusable_removable"},
+          {"question_id": "Q1.15", "selected_answer_id": "refurb_fastener_reusable_removable"},
+          {"question_id": "Q1.16", "selected_answer_id": "refurb_fastener_reusable_removable"},
+          {"question_id": "Q1.17", "selected_answer_id": "refurb_fastener_reusable_removable"},
+          {"question_id": "Q1.18", "selected_answer_id": "refurb_fastener_reusable_removable"},
+          {"question_id": "Q1.19", "selected_answer_id": "refurb_fastener_reusable_removable"},
+          {"question_id": "Q1.20", "selected_answer_id": "refurb_fastener_reusable_removable"}
+        ]
+      },
+      {
+        "parameter_id": "P1_tools",
+        "question_answers": [
+          {"question_id": "Q1.21", "selected_answer_id": "refurb_tools_basic_tools"},
+          {"question_id": "Q1.22", "selected_answer_id": "refurb_tools_basic_tools"},
+          {"question_id": "Q1.23", "selected_answer_id": "refurb_tools_basic_tools"},
+          {"question_id": "Q1.24", "selected_answer_id": "refurb_tools_basic_tools"},
+          {"question_id": "Q1.25", "selected_answer_id": "refurb_tools_basic_tools"},
+          {"question_id": "Q1.26", "selected_answer_id": "refurb_tools_basic_tools"},
+          {"question_id": "Q1.27", "selected_answer_id": "refurb_tools_basic_tools"},
+          {"question_id": "Q1.28", "selected_answer_id": "refurb_tools_basic_tools"},
+          {"question_id": "Q1.29", "selected_answer_id": "refurb_tools_basic_tools"},
+          {"question_id": "Q1.30", "selected_answer_id": "refurb_tools_basic_tools"}
+        ]
+      },
+      {
+        "parameter_id": "P2_documentation_availability",
+        "question_answers": [
+          {"question_id": "Q2.1", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.2", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.3", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.4", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.5", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.6", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.7", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.8", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.9", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.10", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.11", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.12", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.13", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.14", "selected_answer_id": "refurb_doc_publicly_available"},
+          {"question_id": "Q2.15", "selected_answer_id": "refurb_doc_publicly_available"}
+        ]
+      },
+      {
+        "parameter_id": "P2_product_diagnostic",
+        "question_answers": [
+          {"question_id": "Q2.16", "selected_answer_id": "refurb_diag_public_hardware_software"}
+        ]
+      },
+      {
+        "parameter_id": "P2_spare_parts_interfaces",
+        "question_answers": [
+          {"question_id": "Q2.17", "selected_answer_id": "refurb_spare_interface_public_hardware_software"},
+          {"question_id": "Q2.18", "selected_answer_id": "refurb_spare_interface_public_hardware_software"},
+          {"question_id": "Q2.19", "selected_answer_id": "refurb_spare_interface_public_hardware_software"},
+          {"question_id": "Q2.20", "selected_answer_id": "refurb_spare_interface_public_hardware_software"},
+          {"question_id": "Q2.21", "selected_answer_id": "refurb_spare_interface_public_hardware_software"},
+          {"question_id": "Q2.22", "selected_answer_id": "refurb_spare_interface_public_hardware_software"},
+          {"question_id": "Q2.23", "selected_answer_id": "refurb_spare_interface_public_hardware_software"},
+          {"question_id": "Q2.24", "selected_answer_id": "refurb_spare_interface_public_hardware_software"},
+          {"question_id": "Q2.25", "selected_answer_id": "refurb_spare_interface_public_hardware_software"},
+          {"question_id": "Q2.26", "selected_answer_id": "refurb_spare_interface_public_hardware_software"}
+        ]
+      },
+      {
+        "parameter_id": "P2_spare_parts_availability",
+        "question_answers": [
+          {"question_id": "Q2.27", "selected_answer_id": "refurb_spare_avail_5_years"},
+          {"question_id": "Q2.28", "selected_answer_id": "refurb_spare_avail_5_years"},
+          {"question_id": "Q2.29", "selected_answer_id": "refurb_spare_avail_5_years"},
+          {"question_id": "Q2.30", "selected_answer_id": "refurb_spare_avail_5_years"},
+          {"question_id": "Q2.31", "selected_answer_id": "refurb_spare_avail_5_years"},
+          {"question_id": "Q2.32", "selected_answer_id": "refurb_spare_avail_5_years"},
+          {"question_id": "Q2.33", "selected_answer_id": "refurb_spare_avail_5_years"},
+          {"question_id": "Q2.34", "selected_answer_id": "refurb_spare_avail_5_years"},
+          {"question_id": "Q2.35", "selected_answer_id": "refurb_spare_avail_5_years"},
+          {"question_id": "Q2.36", "selected_answer_id": "refurb_spare_avail_5_years"}
+        ]
+      },
+      {
+        "parameter_id": "P2_spare_parts_delivery",
+        "question_answers": [
+          {"question_id": "Q2.37", "selected_answer_id": "refurb_spare_deliv_3_to_5_days"},
+          {"question_id": "Q2.38", "selected_answer_id": "refurb_spare_deliv_3_to_5_days"},
+          {"question_id": "Q2.39", "selected_answer_id": "refurb_spare_deliv_3_to_5_days"},
+          {"question_id": "Q2.40", "selected_answer_id": "refurb_spare_deliv_3_to_5_days"},
+          {"question_id": "Q2.41", "selected_answer_id": "refurb_spare_deliv_3_to_5_days"},
+          {"question_id": "Q2.42", "selected_answer_id": "refurb_spare_deliv_3_to_5_days"},
+          {"question_id": "Q2.43", "selected_answer_id": "refurb_spare_deliv_3_to_5_days"},
+          {"question_id": "Q2.44", "selected_answer_id": "refurb_spare_deliv_3_to_5_days"},
+          {"question_id": "Q2.45", "selected_answer_id": "refurb_spare_deliv_3_to_5_days"},
+          {"question_id": "Q2.46", "selected_answer_id": "refurb_spare_deliv_3_to_5_days"}
+        ]
+      },
+      {
+        "parameter_id": "P3_refurbish_specific_criteria",
+        "question_answers": [
+          {"question_id": "Q3.1", "selected_answer_id": "refurb_q3_1_yes"},
+          {"question_id": "Q3.2", "selected_answer_id": "refurb_q3_2_yes"},
+          {"question_id": "Q3.3", "selected_answer_id": "refurb_q3_3_user_directly"},
+          {"question_id": "Q3.4", "selected_answer_id": "refurb_q3_4_one_click"},
+          {"question_id": "Q3.5", "selected_answer_id": "refurb_q3_5_very_easy"},
+          {"question_id": "Q3.6", "selected_answer_id": "refurb_q3_6_one_click"},
+          {"question_id": "Q3.7", "selected_answer_id": "refurb_q3_7_secure_wipe"},
+          {"question_id": "Q3.8", "selected_answer_id": "refurb_q3_8_easily_removable"},
+          {"question_id": "Q3.9", "selected_answer_id": "refurb_q3_9_5_years"},
+          {"question_id": "Q3.10", "selected_answer_id": "refurb_q3_10_3_to_5_days"},
+          {"question_id": "Q3.11", "selected_answer_id": "refurb_q3_11_fully_compatible"},
+          {"question_id": "Q3.12", "selected_answer_id": "refurb_q3_12_certified_erasure"},
+          {"question_id": "Q3.13", "selected_answer_id": "refurb_q3_13_standard_replaceable"},
+          {"question_id": "Q3.14", "selected_answer_id": "refurb_q3_14_any_brand"},
+          {"question_id": "Q3.15", "selected_answer_id": "refurb_q3_15_yes_device_interface"},
+          {"question_id": "Q3.16", "selected_answer_id": "refurb_q3_16_widely_available"},
+          {"question_id": "Q3.17", "selected_answer_id": "refurb_q3_17_quick_delivery"},
+          {"question_id": "Q3.18", "selected_answer_id": "refurb_q3_18_yes_accessible"}
+        ]
+      },
+      {
+        "parameter_id": "P4_cleaning_polishing_criteria",
+        "question_answers": [
+          {"question_id": "Q4.1", "selected_answer_id": "refurb_q4_1_yes_accessible"},
+          {"question_id": "Q4.2", "selected_answer_id": "refurb_q4_2_no_smooth"},
+          {"question_id": "Q4.3", "selected_answer_id": "refurb_q4_3_yes_tolerates"},
+          {"question_id": "Q4.4", "selected_answer_id": "refurb_q4_4_yes_documented"},
+          {"question_id": "Q4.5", "selected_answer_id": "refurb_q4_5_yes_easily"}
+        ]
+      }
+    ]
+  }
+}

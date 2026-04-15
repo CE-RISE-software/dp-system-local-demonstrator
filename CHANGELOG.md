@@ -2,6 +2,13 @@
 
 All notable changes to `dp-system-local-demonstrator` are documented in this file.
 
+## [0.0.3] - unreleased
+
+### Changed
+- Switched all model artifact resolution to published online CE-RISE model URLs
+- Removed vendored local model artifacts and the local artifact-server path from the demonstrator stack
+- Updated demo and validation scripts to match the online-artifacts-only stack layout
+
 ## [0.0.2] - 03-27-26
 
 ### Changed

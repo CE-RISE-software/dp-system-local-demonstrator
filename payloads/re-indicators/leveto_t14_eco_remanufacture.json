@@ -1,0 +1,73 @@
+{
+  "model_version": "0.0.5",
+  "payload": {
+    "id": "leveto-t14-eco-remanufacture-001",
+    "timestamp": "2026-04-15T12:05:00Z",
+    "model_version": "0.0.5",
+    "indicator_specification_id": "REmanufacture_Laptop",
+    "product_info": {
+      "product_category": "Laptop",
+      "manufacturer": "Leveto",
+      "model": "T14 Eco",
+      "serial_number": "LVT-T14E-001"
+    },
+    "parameter_assessments": [
+      {
+        "parameter_id": "P1_diagnostic",
+        "question_answers": [
+          {
+            "question_id": "Q1.1",
+            "selected_answer_id": "diag_tools_public_hardware_software"
+          },
+          {
+            "question_id": "Q1.2",
+            "selected_answer_id": "func_status_comprehensive_info"
+          }
+        ]
+      },
+      {
+        "parameter_id": "P2_ease_of_disassembly",
+        "question_answers": [
+          {
+            "question_id": "Q2.1",
+            "selected_answer_id": "dis_steps_2_to_5"
+          },
+          {
+            "question_id": "Q2.2",
+            "selected_answer_id": "fastener_dis_reusable_removable"
+          },
+          {
+            "question_id": "Q2.3",
+            "selected_answer_id": "tools_dis_basic_tools"
+          }
+        ]
+      },
+      {
+        "parameter_id": "P3_ease_of_cleaning",
+        "question_answers": [
+          {
+            "question_id": "Q3.1",
+            "selected_answer_id": "clean_access_all_accessible"
+          },
+          {
+            "question_id": "Q3.2",
+            "selected_answer_id": "surf_geom_smooth"
+          },
+          {
+            "question_id": "Q3.3",
+            "selected_answer_id": "clean_methods_tolerates"
+          }
+        ]
+      },
+      {
+        "parameter_id": "P4_wear_and_damage",
+        "question_answers": [
+          {
+            "question_id": "Q4.1",
+            "selected_answer_id": "func_integrity_designed"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -90,7 +90,7 @@ Equivalent non-`make` wrapper commands:
 Direct stack-management commands with `docker compose`:
 
 ```bash
-docker compose -f compose/docker-compose.yml --env-file compose/.env up -d artifact-server postgres dp-storage-jsondb-service hex-core-service
+docker compose -f compose/docker-compose.yml --env-file compose/.env up -d postgres dp-storage-jsondb-service hex-core-service
 docker compose -f compose/docker-compose.yml --env-file compose/.env down --remove-orphans
 docker compose -f compose/docker-compose.yml --env-file compose/.env down --remove-orphans --volumes
 docker compose -f compose/docker-compose.yml --env-file compose/.env ps

@@ -6,7 +6,7 @@ Default mode:
 
 - deploy `hex-core-service`
 - deploy `dp-storage-jsondb-service` with PostgreSQL persistence
-- serve vendored local model artifacts through `artifact-server`
+- resolve model artifacts from the published online Pages URLs
 - run the scripted demonstration through `demo-runner`
 
 The default auth mode is intentionally local and insecure:

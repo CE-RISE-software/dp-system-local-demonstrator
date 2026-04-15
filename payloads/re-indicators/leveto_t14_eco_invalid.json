@@ -1,0 +1,26 @@
+{
+  "model_version": "0.0.5",
+  "payload": {
+    "id": "leveto-t14-eco-invalid-001",
+    "timestamp": "2026-04-15T12:25:00Z",
+    "model_version": "0.0.5",
+    "indicator_specification_id": "REuse_Laptop",
+    "product_info": {
+      "product_category": "Chair",
+      "manufacturer": "Leveto",
+      "model": "T14 Eco",
+      "serial_number": "LVT-T14E-001"
+    },
+    "parameter_assessments": [
+      {
+        "parameter_id": "P1_product_diagnosis",
+        "question_answers": [
+          {
+            "question_id": "Q1.1",
+            "selected_answer_id": "product_id_all_key_info"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -63,7 +63,7 @@ echo "Check 2/5: Previous stack is cleared"
 timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" down --remove-orphans >/dev/null 2>&1 || true
 
 echo "Check 3/5: Stack start is requested"
-if ! timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" up -d artifact-server postgres dp-storage-jsondb-service hex-core-service >"$tmp_dir/up.log" 2>&1; then
+if ! timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" up -d postgres dp-storage-jsondb-service hex-core-service >"$tmp_dir/up.log" 2>&1; then
   echo "Compose did not exit cleanly during stack start. Checking service availability instead."
 fi
 

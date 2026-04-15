@@ -17,14 +17,18 @@ compose_cmd() {
 
 print_help() {
   cat <<'EOF'
-Usage: ./demo.sh {up|demo|down|clean|validate}
+Usage: ./demo.sh {up|demo|demo-re-indicators|down|clean|validate|validate-re-indicators}
 
 Actions:
   up        Start the demonstrator stack in the background.
   demo      Start the stack and run the full demonstration pipeline.
+  demo-re-indicators
+            Start the stack and run the RE indicators laptop calculation pipeline.
   down      Stop the stack and remove compose-managed containers.
   clean     Stop the stack and remove containers plus persistent volumes.
   validate  Check compose rendering and run stack smoke checks.
+  validate-re-indicators
+            Check compose rendering, service health, and a sample RE indicators compute flow.
 EOF
 }
 
@@ -152,10 +156,114 @@ run_demo_pipeline() {
   echo "Invalid payload was rejected as expected."
 }
 
+run_re_indicators_demo_pipeline() {
+  local calc_url hex_url model_version invalid_payload status indicator total_score
+  local -a payloads
+
+  calc_url="http://127.0.0.1:8083"
+  hex_url="http://127.0.0.1:8080"
+  model_version="0.0.5"
+  invalid_payload="$repo_root/payloads/re-indicators/leveto_t14_eco_invalid.json"
+  payloads=(
+    "$repo_root/payloads/re-indicators/leveto_t14_eco_recycle.json"
+    "$repo_root/payloads/re-indicators/leveto_t14_eco_refurbish.json"
+    "$repo_root/payloads/re-indicators/leveto_t14_eco_remanufacture.json"
+    "$repo_root/payloads/re-indicators/leveto_t14_eco_repair.json"
+    "$repo_root/payloads/re-indicators/leveto_t14_eco_reuse.json"
+  )
+
+  echo
+  echo "== Step 1: Wait for local stack =="
+  wait_for_http_code "$hex_url/admin/ready" "200" "90"
+  wait_for_http_code "$hex_url/admin/version" "200" "90"
+  wait_for_http_code "http://127.0.0.1:8081/health" "200" "90"
+  wait_for_http_code "$calc_url/health" "200" "90"
+  echo "hex-core-service, backend, and calculation service are ready."
+
+  echo
+  echo "== Step 2: Compute all laptop indicators =="
+  for payload in "${payloads[@]}"; do
+    indicator="$(jq -r '.payload.indicator_specification_id' "$payload")"
+    echo
+    echo "-- $indicator --"
+    status="$(curl -sS -o /tmp/re-indicators-compute.json -w '%{http_code}' \
+      -X POST "$calc_url/compute" \
+      -H "Content-Type: application/json" \
+      --data-binary @"$payload")"
+    echo "HTTP status: $status"
+    [[ "$status" == "200" ]] || {
+      cat /tmp/re-indicators-compute.json >&2
+      return 1
+    }
+    total_score="$(jq -r '.result.total_score' /tmp/re-indicators-compute.json)"
+    echo "Model version: $(jq -r '.model_version' /tmp/re-indicators-compute.json)"
+    echo "Indicator: $(jq -r '.payload.indicator_specification_id' /tmp/re-indicators-compute.json)"
+    echo "Total score: $total_score"
+    echo "Parameter scores returned: $(jq -r '.result.parameter_scores | length' /tmp/re-indicators-compute.json)"
+  done
+
+  echo
+  echo "== Step 3: Reject an invalid laptop assessment =="
+  status="$(curl -sS -o /tmp/re-indicators-invalid.json -w '%{http_code}' \
+    -X POST "$calc_url/compute" \
+    -H "Content-Type: application/json" \
+    --data-binary @"$invalid_payload")"
+  echo "HTTP status: $status"
+  jq '{code, message}' /tmp/re-indicators-invalid.json
+  [[ "$status" != "200" ]] || return 1
+
+  echo
+  echo "== Success Summary =="
+  echo "Computed all published laptop indicators for Leveto T14 Eco with model version $model_version."
+  echo "Invalid RE indicators payload was rejected as expected."
+}
+
+run_re_indicators_validation() {
+  local calc_url sample_payload status
+  calc_url="http://127.0.0.1:8083"
+  sample_payload="$repo_root/payloads/re-indicators/leveto_t14_eco_reuse.json"
+
+  echo "Check 1/6: Compose file renders"
+  if ! run_compose_quiet /tmp/re-indicators-validate-config.log config >/dev/null; then
+    echo "Compose render failed." >&2
+    cat /tmp/re-indicators-validate-config.log >&2
+    return 1
+  fi
+
+  echo "Check 2/6: Previous stack is cleared"
+  docker compose -f "$compose_file" --env-file "$compose_env" down --remove-orphans >/dev/null 2>&1 || true
+
+  echo "Check 3/6: Stack start is requested"
+  if ! timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" up -d postgres dp-storage-jsondb-service hex-core-service re-indicators-calculation-service >/tmp/re-indicators-validate-up.log 2>&1; then
+    echo "Compose did not exit cleanly during stack start. Checking service availability instead."
+  fi
+
+  echo "Check 4/6: Core and backend health"
+  wait_for_http_code "http://127.0.0.1:8080/admin/ready" "200" "90"
+  wait_for_http_code "http://127.0.0.1:8080/admin/version" "200" "90"
+  wait_for_http_code "http://127.0.0.1:8081/health" "200" "90"
+
+  echo "Check 5/6: Calculation service health"
+  wait_for_http_code "$calc_url/health" "200" "90"
+
+  echo "Check 6/6: Sample laptop compute succeeds"
+  status="$(curl -sS -o /tmp/re-indicators-validate-compute.json -w '%{http_code}' \
+    -X POST "$calc_url/compute" \
+    -H "Content-Type: application/json" \
+    --data-binary @"$sample_payload")"
+  echo "HTTP status: $status"
+  [[ "$status" == "200" ]] || {
+    cat /tmp/re-indicators-validate-compute.json >&2
+    return 1
+  }
+  echo "Sample total score: $(jq -r '.result.total_score' /tmp/re-indicators-validate-compute.json)"
+  echo "Validation passed"
+}
+
 case "${1:-}" in
   up)
     ensure_env
-    compose_cmd up -d artifact-server postgres dp-storage-jsondb-service hex-core-service
+    compose_cmd up -d postgres dp-storage-jsondb-service hex-core-service
     ;;
   demo)
     ensure_env
@@ -169,12 +277,35 @@ case "${1:-}" in
     docker compose -f "$compose_file" --env-file "$compose_env" down --remove-orphans >/dev/null 2>&1 || true
     echo "Check 1/3 passed"
     echo "Check 2/3: Stack start is requested"
-    if ! timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" up -d artifact-server postgres dp-storage-jsondb-service hex-core-service >/tmp/dp-demo-up.log 2>&1; then
+    if ! timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" up -d postgres dp-storage-jsondb-service hex-core-service >/tmp/dp-demo-up.log 2>&1; then
       echo "Compose did not exit cleanly during stack start. Continuing with pipeline checks."
     fi
     echo "Check 2/3 passed"
     echo "Check 3/3: Demonstration pipeline runs"
     if ! run_demo_pipeline; then
+      exit 1
+    fi
+    echo "Check 3/3 passed"
+    echo "Demo passed"
+    ;;
+  demo-re-indicators)
+    ensure_env
+    cleanup_demo() {
+      docker compose -f "$compose_file" --env-file "$compose_env" down --remove-orphans >/tmp/dp-demo-down.log 2>&1 || {
+        cat /tmp/dp-demo-down.log >&2
+      }
+    }
+    trap cleanup_demo EXIT
+    echo "Check 1/3: Previous stack is cleared"
+    docker compose -f "$compose_file" --env-file "$compose_env" down --remove-orphans >/dev/null 2>&1 || true
+    echo "Check 1/3 passed"
+    echo "Check 2/3: Stack start is requested"
+    if ! timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" up -d postgres dp-storage-jsondb-service hex-core-service re-indicators-calculation-service >/tmp/dp-demo-up.log 2>&1; then
+      echo "Compose did not exit cleanly during stack start. Continuing with pipeline checks."
+    fi
+    echo "Check 2/3 passed"
+    echo "Check 3/3: RE indicators pipeline runs"
+    if ! run_re_indicators_demo_pipeline; then
       exit 1
     fi
     echo "Check 3/3 passed"
@@ -191,6 +322,18 @@ case "${1:-}" in
   validate)
     ensure_env
     "$repo_root/scripts/validate-local-compose.sh"
+    ;;
+  validate-re-indicators)
+    ensure_env
+    cleanup_demo() {
+      docker compose -f "$compose_file" --env-file "$compose_env" down --remove-orphans >/tmp/dp-demo-down.log 2>&1 || {
+        cat /tmp/dp-demo-down.log >&2
+      }
+    }
+    trap cleanup_demo EXIT
+    if ! run_re_indicators_validation; then
+      exit 1
+    fi
     ;;
   *)
     print_help >&2

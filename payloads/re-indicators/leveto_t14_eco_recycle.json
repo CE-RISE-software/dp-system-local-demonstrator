@@ -1,0 +1,139 @@
+{
+  "model_version": "0.0.5",
+  "payload": {
+    "id": "leveto-t14-eco-recycle-001",
+    "timestamp": "2026-04-15T12:10:00Z",
+    "model_version": "0.0.5",
+    "indicator_specification_id": "REcycle_Laptop",
+    "product_info": {
+      "product_category": "Laptop",
+      "manufacturer": "Leveto",
+      "model": "T14 Eco",
+      "serial_number": "LVT-T14E-001"
+    },
+    "parameter_assessments": [
+      {
+        "parameter_id": "P1_documentation",
+        "question_answers": [
+          {
+            "question_id": "Q1.1",
+            "selected_answer_id": "laptop_doc_public"
+          },
+          {
+            "question_id": "Q1.2",
+            "selected_answer_id": "laptop_doc_independent"
+          },
+          {
+            "question_id": "Q1.3",
+            "selected_answer_id": "laptop_doc_public"
+          },
+          {
+            "question_id": "Q1.4",
+            "selected_answer_id": "laptop_doc_public"
+          }
+        ]
+      },
+      {
+        "parameter_id": "P2_material_composition",
+        "question_answers": [
+          {
+            "question_id": "Q2.1",
+            "selected_answer_id": "laptop_matcomp_95plus"
+          },
+          {
+            "question_id": "Q2.2",
+            "selected_answer_id": "laptop_crm_partial"
+          },
+          {
+            "question_id": "Q2.3",
+            "selected_answer_id": "laptop_hazardous_complete"
+          },
+          {
+            "question_id": "Q2.4",
+            "selected_answer_id": "laptop_recclass_high"
+          }
+        ]
+      },
+      {
+        "parameter_id": "P3_takeback_scheme",
+        "question_answers": [
+          {
+            "question_id": "Q3.1.1",
+            "selected_answer_id": "laptop_takeback_system_applicable"
+          },
+          {
+            "question_id": "Q3.1.2",
+            "selected_answer_id": "laptop_collection_free_pickup"
+          }
+        ]
+      },
+      {
+        "parameter_id": "P4_depollution",
+        "question_answers": [
+          {
+            "question_id": "Q4.1",
+            "selected_answer_id": "laptop_complist_public"
+          },
+          {
+            "question_id": "Q4.2",
+            "selected_answer_id": "laptop_identify_well_marked"
+          },
+          {
+            "question_id": "Q4.3",
+            "selected_answer_id": "laptop_removability_2_to_5"
+          },
+          {
+            "question_id": "Q4.4",
+            "selected_answer_id": "laptop_tools_no_tools_basic"
+          },
+          {
+            "question_id": "Q4.5",
+            "selected_answer_id": "laptop_fastener_standard"
+          }
+        ]
+      },
+      {
+        "parameter_id": "P5_dismantling",
+        "question_answers": [
+          {
+            "question_id": "Q5.1.1",
+            "selected_answer_id": "laptop_dismantling_2_to_5"
+          },
+          {
+            "question_id": "Q5.1.2",
+            "selected_answer_id": "laptop_dismantling_tools_no_tools_basic"
+          },
+          {
+            "question_id": "Q5.1.3",
+            "selected_answer_id": "laptop_dismantling_fastener_standard"
+          }
+        ]
+      },
+      {
+        "parameter_id": "P6_recyclability_rate",
+        "question_answers": [
+          {
+            "question_id": "Q6.1",
+            "selected_answer_id": "laptop_rec_rate_more_than_60"
+          },
+          {
+            "question_id": "Q6.2.1",
+            "selected_answer_id": "laptop_rec_rate_more_than_60"
+          },
+          {
+            "question_id": "Q6.2.2",
+            "selected_answer_id": "laptop_rec_rate_more_than_60"
+          },
+          {
+            "question_id": "Q6.2.3",
+            "selected_answer_id": "laptop_rec_rate_more_than_60"
+          },
+          {
+            "question_id": "laptop_q6_2_4",
+            "selected_answer_id": "laptop_rec_rate_more_than_60"
+          }
+        ]
+      }
+    ]
+  }
+}

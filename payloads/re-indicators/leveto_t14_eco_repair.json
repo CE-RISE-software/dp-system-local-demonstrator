@@ -1,0 +1,155 @@
+{
+  "model_version": "0.0.5",
+  "payload": {
+    "id": "leveto-t14-eco-repair-001",
+    "timestamp": "2026-04-15T12:15:00Z",
+    "model_version": "0.0.5",
+    "indicator_specification_id": "REpair_Laptop",
+    "product_info": {
+      "product_category": "Laptop",
+      "manufacturer": "Leveto",
+      "model": "T14 Eco",
+      "serial_number": "LVT-T14E-001"
+    },
+    "parameter_assessments": [
+      {
+        "parameter_id": "P1_return_model",
+        "question_answers": [
+          {"question_id": "Q1.1", "selected_answer_id": "return_policy_comprehensive_5"},
+          {"question_id": "Q1.2", "selected_answer_id": "warranty_period_3"}
+        ]
+      },
+      {
+        "parameter_id": "P2_general_questions",
+        "question_answers": [
+          {"question_id": "Q2.1", "selected_answer_id": "repair_env_workshop"},
+          {"question_id": "Q2.2", "selected_answer_id": "repairer_skill_generalist"}
+        ]
+      },
+      {
+        "parameter_id": "P3_disassembly",
+        "question_answers": [
+          {"question_id": "Q3.1", "selected_answer_id": "disassembly_steps_2_to_5"},
+          {"question_id": "Q3.2", "selected_answer_id": "disassembly_steps_2_to_5"},
+          {"question_id": "Q3.3", "selected_answer_id": "disassembly_steps_2_to_5"},
+          {"question_id": "Q3.4", "selected_answer_id": "disassembly_steps_2_to_5"},
+          {"question_id": "Q3.5", "selected_answer_id": "disassembly_steps_2_to_5"},
+          {"question_id": "Q3.6", "selected_answer_id": "disassembly_steps_2_to_5"},
+          {"question_id": "Q3.7", "selected_answer_id": "disassembly_steps_2_to_5"},
+          {"question_id": "Q3.8", "selected_answer_id": "disassembly_steps_2_to_5"},
+          {"question_id": "Q3.9", "selected_answer_id": "disassembly_steps_2_to_5"},
+          {"question_id": "Q3.10", "selected_answer_id": "disassembly_steps_2_to_5"}
+        ]
+      },
+      {
+        "parameter_id": "P4_fasteners",
+        "question_answers": [
+          {"question_id": "Q4.1", "selected_answer_id": "fasteners_reusable_removable"},
+          {"question_id": "Q4.2", "selected_answer_id": "fasteners_reusable_removable"},
+          {"question_id": "Q4.3", "selected_answer_id": "fasteners_reusable_removable"},
+          {"question_id": "Q4.4", "selected_answer_id": "fasteners_reusable_removable"},
+          {"question_id": "Q4.5", "selected_answer_id": "fasteners_reusable_removable"},
+          {"question_id": "Q4.6", "selected_answer_id": "fasteners_reusable_removable"},
+          {"question_id": "Q4.7", "selected_answer_id": "fasteners_reusable_removable"},
+          {"question_id": "Q4.8", "selected_answer_id": "fasteners_reusable_removable"},
+          {"question_id": "Q4.9", "selected_answer_id": "fasteners_reusable_removable"},
+          {"question_id": "Q4.10", "selected_answer_id": "fasteners_reusable_removable"}
+        ]
+      },
+      {
+        "parameter_id": "P5_tools",
+        "question_answers": [
+          {"question_id": "Q5.1", "selected_answer_id": "tools_basic_tools"},
+          {"question_id": "Q5.2", "selected_answer_id": "tools_basic_tools"},
+          {"question_id": "Q5.3", "selected_answer_id": "tools_basic_tools"},
+          {"question_id": "Q5.4", "selected_answer_id": "tools_basic_tools"},
+          {"question_id": "Q5.5", "selected_answer_id": "tools_basic_tools"},
+          {"question_id": "Q5.6", "selected_answer_id": "tools_basic_tools"},
+          {"question_id": "Q5.7", "selected_answer_id": "tools_basic_tools"},
+          {"question_id": "Q5.8", "selected_answer_id": "tools_basic_tools"},
+          {"question_id": "Q5.9", "selected_answer_id": "tools_basic_tools"},
+          {"question_id": "Q5.10", "selected_answer_id": "tools_basic_tools"}
+        ]
+      },
+      {
+        "parameter_id": "P6_documentation_availability",
+        "question_answers": [
+          {"question_id": "Q6.1", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.2", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.3", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.4", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.5", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.6", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.7", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.8", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.9", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.10", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.11", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.12", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.13", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.14", "selected_answer_id": "doc_avail_publicly_available"},
+          {"question_id": "Q6.15", "selected_answer_id": "doc_avail_publicly_available"}
+        ]
+      },
+      {
+        "parameter_id": "P7_spare_parts_diagnostics",
+        "question_answers": [
+          {"question_id": "Q7.1", "selected_answer_id": "diag_interface_public_hardware_software"},
+          {"question_id": "Q7.2", "selected_answer_id": "diag_interface_public_hardware_software"},
+          {"question_id": "Q7.3", "selected_answer_id": "diag_interface_public_hardware_software"},
+          {"question_id": "Q7.4", "selected_answer_id": "diag_interface_public_hardware_software"},
+          {"question_id": "Q7.5", "selected_answer_id": "diag_interface_public_hardware_software"},
+          {"question_id": "Q7.6", "selected_answer_id": "diag_interface_public_hardware_software"},
+          {"question_id": "Q7.7", "selected_answer_id": "diag_interface_public_hardware_software"},
+          {"question_id": "Q7.8", "selected_answer_id": "diag_interface_public_hardware_software"},
+          {"question_id": "Q7.9", "selected_answer_id": "diag_interface_public_hardware_software"},
+          {"question_id": "Q7.10", "selected_answer_id": "diag_interface_public_hardware_software"}
+        ]
+      },
+      {
+        "parameter_id": "P8_spare_parts_availability",
+        "question_answers": [
+          {"question_id": "Q8.1", "selected_answer_id": "spare_avail_5_years"},
+          {"question_id": "Q8.2", "selected_answer_id": "spare_avail_5_years"},
+          {"question_id": "Q8.3", "selected_answer_id": "spare_avail_5_years"},
+          {"question_id": "Q8.4", "selected_answer_id": "spare_avail_5_years"},
+          {"question_id": "Q8.5", "selected_answer_id": "spare_avail_5_years"},
+          {"question_id": "Q8.6", "selected_answer_id": "spare_avail_5_years"},
+          {"question_id": "Q8.7", "selected_answer_id": "spare_avail_5_years"},
+          {"question_id": "Q8.8", "selected_answer_id": "spare_avail_5_years"},
+          {"question_id": "Q8.9", "selected_answer_id": "spare_avail_5_years"},
+          {"question_id": "Q8.10", "selected_answer_id": "spare_avail_5_years"}
+        ]
+      },
+      {
+        "parameter_id": "P9_spare_parts_delivery",
+        "question_answers": [
+          {"question_id": "Q9.1", "selected_answer_id": "spare_deliv_3_to_5_days"},
+          {"question_id": "Q9.2", "selected_answer_id": "spare_deliv_3_to_5_days"},
+          {"question_id": "Q9.3", "selected_answer_id": "spare_deliv_3_to_5_days"},
+          {"question_id": "Q9.4", "selected_answer_id": "spare_deliv_3_to_5_days"},
+          {"question_id": "Q9.5", "selected_answer_id": "spare_deliv_3_to_5_days"},
+          {"question_id": "Q9.6", "selected_answer_id": "spare_deliv_3_to_5_days"},
+          {"question_id": "Q9.7", "selected_answer_id": "spare_deliv_3_to_5_days"},
+          {"question_id": "Q9.8", "selected_answer_id": "spare_deliv_3_to_5_days"},
+          {"question_id": "Q9.9", "selected_answer_id": "spare_deliv_3_to_5_days"},
+          {"question_id": "Q9.10", "selected_answer_id": "spare_deliv_3_to_5_days"}
+        ]
+      },
+      {
+        "parameter_id": "P10_product_specific",
+        "question_answers": [
+          {"question_id": "Q10.1", "selected_answer_id": "yes_no_yes"},
+          {"question_id": "Q10.2", "selected_answer_id": "yes_no_yes"},
+          {"question_id": "Q10.3", "selected_answer_id": "yes_no_yes"},
+          {"question_id": "Q10.4", "selected_answer_id": "yes_no_yes"},
+          {"question_id": "Q10.5", "selected_answer_id": "yes_no_yes"},
+          {"question_id": "Q10.6", "selected_answer_id": "yes_no_yes"},
+          {"question_id": "Q10.7", "selected_answer_id": "yes_no_yes"},
+          {"question_id": "Q10.8", "selected_answer_id": "yes_no_yes"},
+          {"question_id": "Q10.9", "selected_answer_id": "yes_no_yes"}
+        ]
+      }
+    ]
+  }
+}
