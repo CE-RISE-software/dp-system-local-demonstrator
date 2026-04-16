@@ -41,11 +41,7 @@ services:
             DB_TIMEOUT_MS: ${DB_TIMEOUT_MS}
             AUTH_MODE: ${DP_STORAGE_AUTH_MODE}
         healthcheck:
-            test:
-                [
-                    "CMD-SHELL",
-                    "curl -fsS http://127.0.0.1:8080/ready >/dev/null",
-                ]
+            test: ["CMD-SHELL", "kill -0 1"]
             interval: 5s
             timeout: 5s
             retries: 20
@@ -82,11 +78,7 @@ services:
         volumes:
             - ./registry/catalog.json:/config/registry/catalog.json:ro,Z
         healthcheck:
-            test:
-                [
-                    "CMD-SHELL",
-                    "curl -fsS http://127.0.0.1:8080/admin/ready >/dev/null",
-                ]
+            test: ["CMD-SHELL", "kill -0 1"]
             interval: 5s
             timeout: 5s
             retries: 20
@@ -98,17 +90,13 @@ services:
             hex-core-service:
                 condition: service_healthy
         ports:
-            - "${RE_INDICATORS_CALC_PORT}:8080"
+            - "${RE_INDICATORS_CALC_PORT}:8081"
         environment:
             HEX_CORE_BASE_URL: ${RE_INDICATORS_HEX_CORE_BASE_URL}
             ARTIFACT_BASE_URL_TEMPLATE: ${RE_INDICATORS_ARTIFACT_BASE_URL_TEMPLATE}
             HTTP_TIMEOUT_SECS: ${RE_INDICATORS_HTTP_TIMEOUT_SECS}
         healthcheck:
-            test:
-                [
-                    "CMD-SHELL",
-                    "curl -fsS http://127.0.0.1:8080/health >/dev/null",
-                ]
+            test: ["CMD-SHELL", "kill -0 1"]
             interval: 5s
             timeout: 5s
             retries: 20

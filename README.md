@@ -10,10 +10,10 @@ The demo stack runs:
 - `hex-core-service`
 - `dp-storage-jsondb-service`
 - PostgreSQL for backend persistence
-- a local artifact server with vendored model artifacts for:
-  - `dp-record-metadata`
-  - `product-profile`
-  - `usage-and-maintenance`
+- `re-indicators-calculation-service` for the extended laptop scenario
+
+All model artifacts are resolved from the published CE-RISE model pages at runtime. No model
+artifacts are vendored locally in this repository.
 
 The scripted demonstration uses a fictional chair product, `AIKIA LIDEN Chair`, and walks through:
 
@@ -24,6 +24,9 @@ The scripted demonstration uses a fictional chair product, `AIKIA LIDEN Chair`, 
 5. logout and login again
 6. stored record read-back through query
 7. invalid payload rejection with clear error output
+
+An additional scripted scenario uses a fictional laptop, `Leveto T14 Eco`, and computes all currently
+published laptop RE indicators through `re-indicators-calculation-service`.
 
 ## Prerequisites
 
@@ -47,6 +50,13 @@ cp compose/.env.example compose/.env
 
 `make demo` starts the stack, runs the full pipeline, and brings the stack down automatically at the end.
 
+To run the RE-indicators extension instead:
+
+```bash
+cp compose/.env.example compose/.env
+make demo-re-indicators
+```
+
 ## Auth Handling
 
 Default mode is local no-auth:
@@ -60,21 +70,24 @@ creating, dropping, and recreating a local demo session in the scripted flow. Re
 
 ## Repo Layout
 
+- [`demo.sh`](/home/riccardo/code/CE-RISE-software/dp-system-local-demonstrator/demo.sh)
 - [`compose/docker-compose.yml`](/home/riccardo/code/CE-RISE-software/dp-system-local-demonstrator/compose/docker-compose.yml)
 - [`compose/.env.example`](/home/riccardo/code/CE-RISE-software/dp-system-local-demonstrator/compose/.env.example)
 - [`compose/registry/catalog.json`](/home/riccardo/code/CE-RISE-software/dp-system-local-demonstrator/compose/registry/catalog.json)
-- [`demo/runner/run-demo.sh`](/home/riccardo/code/CE-RISE-software/dp-system-local-demonstrator/demo/runner/run-demo.sh)
 - [`payloads/dp_valid.json`](/home/riccardo/code/CE-RISE-software/dp-system-local-demonstrator/payloads/dp_valid.json)
 - [`payloads/dp_invalid.json`](/home/riccardo/code/CE-RISE-software/dp-system-local-demonstrator/payloads/dp_invalid.json)
+- [`payloads/re-indicators`](/home/riccardo/code/CE-RISE-software/dp-system-local-demonstrator/payloads/re-indicators)
 
 ## Commands
 
 ```bash
 make up
 make demo
+make demo-re-indicators
 make down
 make clean
 make validate
+make validate-re-indicators
 ```
 
 Equivalent non-`make` wrapper commands:
@@ -82,15 +95,18 @@ Equivalent non-`make` wrapper commands:
 ```bash
 ./demo.sh up
 ./demo.sh demo
+./demo.sh demo-re-indicators
 ./demo.sh down
 ./demo.sh clean
 ./demo.sh validate
+./demo.sh validate-re-indicators
 ```
 
 Direct stack-management commands with `docker compose`:
 
 ```bash
 docker compose -f compose/docker-compose.yml --env-file compose/.env up -d postgres dp-storage-jsondb-service hex-core-service
+docker compose -f compose/docker-compose.yml --env-file compose/.env up -d postgres dp-storage-jsondb-service hex-core-service re-indicators-calculation-service
 docker compose -f compose/docker-compose.yml --env-file compose/.env down --remove-orphans
 docker compose -f compose/docker-compose.yml --env-file compose/.env down --remove-orphans --volumes
 docker compose -f compose/docker-compose.yml --env-file compose/.env ps
@@ -100,7 +116,9 @@ docker compose -f compose/docker-compose.yml --env-file compose/.env logs -f
 Command behavior:
 
 - `make demo` or `./demo.sh demo` runs the pipeline and then shuts the stack down automatically
+- `make demo-re-indicators` or `./demo.sh demo-re-indicators` runs the laptop RE-indicators pipeline and then shuts the stack down automatically
 - `make validate` or `./demo.sh validate` runs smoke checks and then shuts the stack down automatically
+- `make validate-re-indicators` or `./demo.sh validate-re-indicators` runs smoke checks for the RE-indicators path and then shuts the stack down automatically
 - `make up` or `./demo.sh up` leaves the stack running for inspection
 
 ## Payload Modeling
@@ -113,6 +131,23 @@ The default valid payload is a composite record built around:
 
 The demo operation itself targets the `dp-record-metadata` model/version, while the accessory model data is
 nested in the payload and declared in `applied_schemas`.
+
+## RE Indicators Scenario
+
+The extended scenario uses the fictional laptop `Leveto T14 Eco` and the published
+`re-indicators-specification` model.
+
+It computes all currently supported laptop indicators:
+
+- `REcycle_Laptop`
+- `REfurbish_Laptop`
+- `REmanufacture_Laptop`
+- `REpair_Laptop`
+- `REuse_Laptop`
+
+The demonstrator calls the published `re-indicators-calculation-service` image locally and prints the
+returned total score for each indicator. The invalid case uses an unknown
+`indicator_specification_id`, which the published service rejects deterministically.
 
 ## Inspecting Logs and Persistence
 
@@ -149,10 +184,11 @@ make clean
 
 ## Troubleshooting
 
-- Port conflict on `8080`, `8081`, `8082`, or `5432`: adjust values in [`compose/.env.example`](/home/riccardo/code/CE-RISE-software/dp-system-local-demonstrator/compose/.env.example) and regenerate `compose/.env`.
-- Core not ready: inspect `hex-core-service` logs and confirm the artifact server is healthy.
+- Port conflict on `8080`, `8081`, `8083`, or `5432`: adjust values in [`compose/.env.example`](/home/riccardo/code/CE-RISE-software/dp-system-local-demonstrator/compose/.env.example) and regenerate `compose/.env`.
+- Core not ready: inspect `hex-core-service` logs.
 - Backend not ready: inspect `dp-storage-jsondb-service` and `postgres` logs.
-- Invalid payload passes unexpectedly: verify the demo is targeting `dp-record-metadata` `0.0.2` and that the local vendored schema files are mounted.
+- RE-indicators path not ready: inspect `re-indicators-calculation-service` logs and confirm port `8083` is free.
+- Invalid RE-indicators payload passes unexpectedly: verify the invalid payload still uses an unknown `indicator_specification_id`.
 - On hosts using `podman-compose` through `docker compose`, the stack start command may return non-zero even when the services do come up; the validation and demo scripts therefore judge success by actual service availability.
 
 ---

@@ -4,9 +4,9 @@
     "id": "leveto-t14-eco-invalid-001",
     "timestamp": "2026-04-15T12:25:00Z",
     "model_version": "0.0.5",
-    "indicator_specification_id": "REuse_Laptop",
+    "indicator_specification_id": "NOPE_Laptop",
     "product_info": {
-      "product_category": "Chair",
+      "product_category": "Laptop",
       "manufacturer": "Leveto",
       "model": "T14 Eco",
       "serial_number": "LVT-T14E-001"

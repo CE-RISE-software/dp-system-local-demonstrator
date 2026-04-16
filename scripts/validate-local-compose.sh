@@ -23,6 +23,27 @@ run_compose_quiet() {
   fi
 }
 
+compose_down_quiet() {
+  local log_file
+  log_file="$(mktemp)"
+  if docker compose -f "$compose_file" --env-file "$compose_env" down --remove-orphans >"$log_file" 2>&1; then
+    rm -f "$log_file"
+    return 0
+  fi
+
+  if grep -Ev \
+    'no container with (name or ID|ID or name) "compose_(demo-runner|re-indicators-calculation-service)_1" found|no such container|StopSignal SIGTERM failed to stop container|no pod with ID .* found in database: no such pod|unable to find network with name or ID compose_default: network not found' \
+    "$log_file" | grep -q '[^[:space:]]'; then
+    echo "Compose down failed." >&2
+    cat "$log_file" >&2
+    rm -f "$log_file"
+    return 1
+  fi
+
+  rm -f "$log_file"
+  return 0
+}
+
 wait_for_http_code() {
   local url="$1"
   local expected="$2"
@@ -32,7 +53,7 @@ wait_for_http_code() {
 
   started="$(date +%s)"
   while true; do
-    code="$(curl -sS -o /tmp/dp-validate-body.json -w '%{http_code}' "$url" || true)"
+    code="$(curl -sS -o /tmp/dp-validate-body.json -w '%{http_code}' "$url" 2>/dev/null || true)"
     if [[ "$code" == "$expected" ]]; then
       return 0
     fi
@@ -48,7 +69,7 @@ wait_for_http_code() {
 }
 
 cleanup() {
-  timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" down --remove-orphans >/dev/null 2>&1 || true
+  compose_down_quiet || true
 }
 
 trap cleanup EXIT
@@ -60,7 +81,7 @@ echo "Check 1/5: Compose file renders"
 run_compose_quiet "$tmp_dir/config.log" config >/dev/null
 
 echo "Check 2/5: Previous stack is cleared"
-timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" down --remove-orphans >/dev/null 2>&1 || true
+compose_down_quiet || true
 
 echo "Check 3/5: Stack start is requested"
 if ! timeout 180s docker compose -f "$compose_file" --env-file "$compose_env" up -d postgres dp-storage-jsondb-service hex-core-service >"$tmp_dir/up.log" 2>&1; then
