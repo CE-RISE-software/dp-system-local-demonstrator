@@ -12,7 +12,6 @@ env:
 
 jobs:
     create-release:
-        if: github.server_url == 'https://github.com'
         runs-on: ubuntu-latest
         permissions:
             contents: write # Required for creating releases

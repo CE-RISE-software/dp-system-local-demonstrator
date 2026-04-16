@@ -1,0 +1,12 @@
+name: Release Placeholder
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  noop:
+    runs-on: codeberg-tiny
+    steps:
+      - run: echo "Forgejo release placeholder"
