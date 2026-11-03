@@ -23,6 +23,24 @@
             "version": "0.0.5",
             "schema_url": "https://ce-rise-models.codeberg.page/re-indicators-specification/generated/schema.json",
             "shacl_url": "https://ce-rise-models.codeberg.page/re-indicators-specification/generated/shacl.ttl"
+        },
+        {
+            "model": "product-system",
+            "version": "0.0.1",
+            "schema_url": "https://codeberg.org/CE-RISE-models/product-system/raw/tag/pages-v0.0.1/generated/schema.json",
+            "shacl_url": "https://codeberg.org/CE-RISE-models/product-system/raw/tag/pages-v0.0.1/generated/shacl.ttl"
+        },
+        {
+            "model": "lci-dataset",
+            "version": "0.0.1",
+            "schema_url": "https://codeberg.org/CE-RISE-models/lci-dataset/raw/tag/pages-v0.0.1/generated/schema.json",
+            "shacl_url": "https://codeberg.org/CE-RISE-models/lci-dataset/raw/tag/pages-v0.0.1/generated/shacl.ttl"
+        },
+        {
+            "model": "integrated-lca",
+            "version": "0.2.0",
+            "schema_url": "https://codeberg.org/CE-RISE-models/integrated-lca/raw/tag/pages-v0.2.0/generated/schema.json",
+            "shacl_url": "https://codeberg.org/CE-RISE-models/integrated-lca/raw/tag/pages-v0.2.0/generated/shacl.ttl"
         }
     ]
 }

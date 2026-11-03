@@ -1,6 +1,6 @@
 {
     "title": "CE-RISE Digital Passport System: Local Demonstrator",
-    "description": "Local, Docker-only demonstrator for the CE-RISE Digital Passport system, running the hex-core-service with a reference backend and scripted flows to authenticate, upload/validate a passport record, persist it, and log in again to read it back.",
+    "description": "Local demonstrator of a CE-RISE Digital Passport system using published service images, with scripted scenarios for record validation and persistence, RE Indicators calculation, and SEE Impacts calculation.",
     "license": "EUPL-1.2",
     "upload_type": "software",
     "creators": [

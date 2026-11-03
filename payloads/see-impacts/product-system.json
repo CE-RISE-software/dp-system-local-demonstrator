@@ -1,0 +1,72 @@
+{
+  "product_system_identifier": "pv-panel",
+  "product_system_scope": "HYBRID",
+  "product_system_description": "PV panel product system with 13 foreground activities and a reference output of 1 m^2. Uses the bundled BONSAI-EF3.1 project. Inventory exclusions are recorded in the LCI Dataset description.",
+  "lci_dataset_references": [
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "lci_dataset_identifier": "pv-panel-inventory",
+      "lci_dataset_version": "1"
+    }
+  ],
+  "activity_references": [
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "CzSiliconProductionCNAct"
+    },
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "MGSiliconProductionAPACAct"
+    },
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "MGSiliconProductionCNAct"
+    },
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "MGSiliconProductionNOAct"
+    },
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "MGSiliconProductionUSAct"
+    },
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "PVCellManufacturingCNAct"
+    },
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "PVPanelManufacturingCNAct"
+    },
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "SiWaferManufacturingCNAct"
+    },
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "SiliconMarketPVCNAct"
+    },
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "SolarGradeSiliconProductionAPACAct"
+    },
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "SolarGradeSiliconProductionCNAct"
+    },
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "SolarGradeSiliconProductionRERAct"
+    },
+    {
+      "lci_dataset_reference_identifier": "inventory",
+      "activity_identifier": "SolarGradeSiliconProductionUSAct"
+    }
+  ],
+  "reference_flow_specification": {
+    "reference_flow_lci_dataset_reference_identifier": "inventory",
+    "reference_flow_identifier": "PVPanelManufacturingCNAct_flow0_PhotovoltaicPanelSingleSi",
+    "reference_flow_numerical_value": 1.0,
+    "reference_flow_unit_reference": "m^2"
+  }
+}

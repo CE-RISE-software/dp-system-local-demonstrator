@@ -1,0 +1,375 @@
+{
+  "lca_analysis_instances": [
+    {
+      "study_metadata": {
+        "assessment_dimensions": [
+          "ENVIRONMENTAL"
+        ],
+        "database_info": {
+          "background_database": "BONSAI",
+          "database_version": "BONSAI-EF3.1 snapshot 2026-10-08"
+        },
+        "software_info": {
+          "software_name": "see-impacts-calculation-service",
+          "software_version": "0.0.1",
+          "calculation_timestamp": "2026-11-03T08:16:30.269552+00:00"
+        },
+        "assessment_toolchain": {
+          "tool_executions": [
+            {
+              "execution_order": 1,
+              "tool_identifier": "bw2data",
+              "tool_name": "Brightway bw2data",
+              "tool_roles": [
+                "DATA_EXTRACTION"
+              ],
+              "tool_version": "4.7"
+            },
+            {
+              "execution_order": 2,
+              "tool_identifier": "bw2calc",
+              "tool_name": "Brightway bw2calc",
+              "tool_roles": [
+                "INVENTORY_CALCULATION",
+                "IMPACT_ASSESSMENT"
+              ],
+              "tool_version": "2.5.0"
+            }
+          ]
+        },
+        "functional_unit_specification": {
+          "reference_flow_identifier": "PVPanelManufacturingCNAct_flow0_PhotovoltaicPanelSingleSi",
+          "functional_unit_quantity": 1.0,
+          "functional_unit_unit": "m^2"
+        }
+      },
+      "assessment_inputs": {
+        "input_references": [
+          {
+            "input_role": "PRODUCT_SYSTEM",
+            "source_model_identifier": "product-system",
+            "source_model_version": "0.0.1",
+            "source_record_identifier": "pv-panel"
+          },
+          {
+            "input_role": "FOREGROUND_INVENTORY",
+            "source_model_identifier": "lci-dataset",
+            "source_model_version": "0.0.1",
+            "source_record_identifier": "pv-panel-inventory",
+            "source_record_version": "1"
+          },
+          {
+            "input_role": "BACKGROUND_INVENTORY",
+            "source_model_identifier": "brightway-project",
+            "source_record_identifier": "cerise_bonsai",
+            "source_artifact_uri": "urn:sha256:339e6e3199bd13c7ab5f1948bfd9626f033668dac4bfad4705d17d8c52993a0b"
+          }
+        ]
+      },
+      "assessment_results": {
+        "assessment_indicators": [
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Acidification / Accumulated Exceedance (AE)",
+            "indicator_name": "Accumulated Exceedance (AE)",
+            "assessment_method": "EF 3.1 / Acidification / Accumulated Exceedance (AE)",
+            "indicator_result": {
+              "numeric_value": 1.6357899504615325,
+              "unit": "mol H+-Eq"
+            },
+            "method_version": "01.04.000",
+            "calculation_model_or_factor_set_reference": "ef-31aa.da16c3c4765540ccbf11d1935ff22c22"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Climate change / Radiative forcing as Global Warming Potential (GWP100)",
+            "indicator_name": "Radiative forcing as Global Warming Potential (GWP100)",
+            "assessment_method": "EF 3.1 / Climate change / Radiative forcing as Global Warming Potential (GWP100)",
+            "indicator_result": {
+              "numeric_value": 145.81751590503268,
+              "unit": "kg CO2-Eq"
+            },
+            "method_version": "01.00.000",
+            "calculation_model_or_factor_set_reference": "ef-31cr.54f4488dea758642f545ebdab88aaca5"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Climate change-Biogenic / Radiative forcing as Global Warming Potential (GWP100)",
+            "indicator_name": "Radiative forcing as Global Warming Potential (GWP100)",
+            "assessment_method": "EF 3.1 / Climate change-Biogenic / Radiative forcing as Global Warming Potential (GWP100)",
+            "indicator_result": {
+              "numeric_value": 0.5873080993450648,
+              "unit": "kg CO2-Eq"
+            },
+            "method_version": "01.00.000",
+            "calculation_model_or_factor_set_reference": "ef-31cr.82fa375f28b5e1378d4c112ecde1100c"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Climate change-Fossil / Radiative forcing as Global Warming Potential (GWP100)",
+            "indicator_name": "Radiative forcing as Global Warming Potential (GWP100)",
+            "assessment_method": "EF 3.1 / Climate change-Fossil / Radiative forcing as Global Warming Potential (GWP100)",
+            "indicator_result": {
+              "numeric_value": 145.23020780568766,
+              "unit": "kg CO2-Eq"
+            },
+            "method_version": "01.00.000",
+            "calculation_model_or_factor_set_reference": "ef-31cr.c7d0efaadbfdc86aa7ae02f3b31db4b5"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Climate change-Land use and land use change / Radiative forcing as Global Warming Potential (GWP100)",
+            "indicator_name": "Radiative forcing as Global Warming Potential (GWP100)",
+            "assessment_method": "EF 3.1 / Climate change-Land use and land use change / Radiative forcing as Global Warming Potential (GWP100)",
+            "indicator_result": {
+              "numeric_value": 0.0,
+              "unit": "kg CO2-Eq"
+            },
+            "method_version": "01.00.000",
+            "calculation_model_or_factor_set_reference": "ef-31cr.74ec1eeebea36c06673b82292deb7d70"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / EF-particulate matter / Impact on human health",
+            "indicator_name": "Impact on human health",
+            "assessment_method": "EF 3.1 / EF-particulate matter / Impact on human health",
+            "indicator_result": {
+              "numeric_value": 4.1439169272368374e-05,
+              "unit": "disease incidence"
+            },
+            "method_version": "02.00.011",
+            "calculation_model_or_factor_set_reference": "ef-31ei.59834ff61086228b2ce4eb6440825f7e"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Ecotoxicity, freshwater / Comparative Toxic Unit for ecosystems (CTUe) ",
+            "indicator_name": "Comparative Toxic Unit for ecosystems (CTUe) ",
+            "assessment_method": "EF 3.1 / Ecotoxicity, freshwater / Comparative Toxic Unit for ecosystems (CTUe) ",
+            "indicator_result": {
+              "numeric_value": 25.13289830392144,
+              "unit": "CTUe"
+            },
+            "method_version": "01.00.000",
+            "calculation_model_or_factor_set_reference": "ef-31ec.36c19cd1a0a5debd9474cff9f889631e"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Ecotoxicity, freshwater_inorganics / Comparative Toxic Unit for ecosystems (CTUe) ",
+            "indicator_name": "Comparative Toxic Unit for ecosystems (CTUe) ",
+            "assessment_method": "EF 3.1 / Ecotoxicity, freshwater_inorganics / Comparative Toxic Unit for ecosystems (CTUe) ",
+            "indicator_result": {
+              "numeric_value": 22.68910094423957,
+              "unit": "CTUe"
+            },
+            "method_version": "01.00.000",
+            "calculation_model_or_factor_set_reference": "ef-31ec.b9151f57f4b3429c47d52d79e944dad8"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Ecotoxicity, freshwater_organics / Comparative Toxic Unit for ecosystems (CTUe) ",
+            "indicator_name": "Comparative Toxic Unit for ecosystems (CTUe) ",
+            "assessment_method": "EF 3.1 / Ecotoxicity, freshwater_organics / Comparative Toxic Unit for ecosystems (CTUe) ",
+            "indicator_result": {
+              "numeric_value": 2.443797359681867,
+              "unit": "CTUe"
+            },
+            "method_version": "01.00.000",
+            "calculation_model_or_factor_set_reference": "ef-31ec.4c51ce1eebeece5b823dfa813556f255"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Eutrophication marine / Fraction of nutrients reaching marine end compartment (N)",
+            "indicator_name": "Fraction of nutrients reaching marine end compartment (N)",
+            "assessment_method": "EF 3.1 / Eutrophication marine / Fraction of nutrients reaching marine end compartment (N)",
+            "indicator_result": {
+              "numeric_value": 0.4553457719568096,
+              "unit": "kg N-Eq"
+            },
+            "method_version": "02.00.010",
+            "calculation_model_or_factor_set_reference": "ef-31ef.29d8d44946b0abfa865e66833b3c14ca"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Eutrophication, freshwater / Fraction of nutrients reaching freshwater end compartment (P)",
+            "indicator_name": "Fraction of nutrients reaching freshwater end compartment (P)",
+            "assessment_method": "EF 3.1 / Eutrophication, freshwater / Fraction of nutrients reaching freshwater end compartment (P)",
+            "indicator_result": {
+              "numeric_value": 0.1288472135104293,
+              "unit": "kg P-Eq"
+            },
+            "method_version": "01.00.010",
+            "calculation_model_or_factor_set_reference": "ef-31ef.2784a9f77d8ef4f85fe08acc8ffbe21b"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Eutrophication, terrestrial / Accumulated Exceedance (AE) ",
+            "indicator_name": "Accumulated Exceedance (AE) ",
+            "assessment_method": "EF 3.1 / Eutrophication, terrestrial / Accumulated Exceedance (AE) ",
+            "indicator_result": {
+              "numeric_value": 2.205773400275074,
+              "unit": "mol N-Eq"
+            },
+            "method_version": "01.02.009",
+            "calculation_model_or_factor_set_reference": "ef-31ea.5a649ec347d0cba4ba646621bb6edaf2"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Human toxicity, cancer / Comparative Toxic Unit for human (CTUh) ",
+            "indicator_name": "Comparative Toxic Unit for human (CTUh) ",
+            "assessment_method": "EF 3.1 / Human toxicity, cancer / Comparative Toxic Unit for human (CTUh) ",
+            "indicator_result": {
+              "numeric_value": 2.453584907890552e-07,
+              "unit": "CTUh"
+            },
+            "method_version": "01.01.000",
+            "calculation_model_or_factor_set_reference": "ef-31hc.b0488464f61af7e3d743ba21bfdff184"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Human toxicity, cancer_inorganics / Comparative Toxic Unit for human (CTUh) ",
+            "indicator_name": "Comparative Toxic Unit for human (CTUh) ",
+            "assessment_method": "EF 3.1 / Human toxicity, cancer_inorganics / Comparative Toxic Unit for human (CTUh) ",
+            "indicator_result": {
+              "numeric_value": 9.341964691961517e-09,
+              "unit": "CTUh"
+            },
+            "method_version": "01.00.000",
+            "calculation_model_or_factor_set_reference": "ef-31hc.e310071774e14eb0f97786570b575fbc"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Human toxicity, cancer_organics / Comparative Toxic Unit for human (CTUh) ",
+            "indicator_name": "Comparative Toxic Unit for human (CTUh) ",
+            "assessment_method": "EF 3.1 / Human toxicity, cancer_organics / Comparative Toxic Unit for human (CTUh) ",
+            "indicator_result": {
+              "numeric_value": 2.3601652609709366e-07,
+              "unit": "CTUh"
+            },
+            "method_version": "01.01.000",
+            "calculation_model_or_factor_set_reference": "ef-31hc.268dcb536dd7359e0708e1b3a7b1a98f"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Human toxicity, non-cancer / Comparative Toxic Unit for human (CTUh)",
+            "indicator_name": "Comparative Toxic Unit for human (CTUh)",
+            "assessment_method": "EF 3.1 / Human toxicity, non-cancer / Comparative Toxic Unit for human (CTUh)",
+            "indicator_result": {
+              "numeric_value": 1.2442577627908232e-06,
+              "unit": "CTUh"
+            },
+            "method_version": "01.00.000",
+            "calculation_model_or_factor_set_reference": "ef-31hc.e7ccf7fccee27aa59994c580f1d52c1e"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Human toxicity, non-cancer_inorganics / Comparative Toxic Unit for human (CTUh)",
+            "indicator_name": "Comparative Toxic Unit for human (CTUh)",
+            "assessment_method": "EF 3.1 / Human toxicity, non-cancer_inorganics / Comparative Toxic Unit for human (CTUh)",
+            "indicator_result": {
+              "numeric_value": 1.2150854039350036e-06,
+              "unit": "CTUh"
+            },
+            "method_version": "01.00.000",
+            "calculation_model_or_factor_set_reference": "ef-31hc.04d64df870b46e9344efb43ebcfe4696"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Human toxicity, non-cancer_organics / Comparative Toxic Unit for human (CTUh)",
+            "indicator_name": "Comparative Toxic Unit for human (CTUh)",
+            "assessment_method": "EF 3.1 / Human toxicity, non-cancer_organics / Comparative Toxic Unit for human (CTUh)",
+            "indicator_result": {
+              "numeric_value": 2.9172358855819392e-08,
+              "unit": "CTUh"
+            },
+            "method_version": "01.00.000",
+            "calculation_model_or_factor_set_reference": "ef-31hc.cab9c142b902d07614dd2d6b44952417"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Ionising radiation, human health / Human exposure efficiency relative to U235",
+            "indicator_name": "Human exposure efficiency relative to U235",
+            "assessment_method": "EF 3.1 / Ionising radiation, human health / Human exposure efficiency relative to U235",
+            "indicator_result": {
+              "numeric_value": 0.0,
+              "unit": "kBq U235-Eq"
+            },
+            "method_version": "01.00.011",
+            "calculation_model_or_factor_set_reference": "ef-31ih.8ba957b6bf3114c78b3b06e4640344df"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Land use / Soil quality index",
+            "indicator_name": "Soil quality index",
+            "assessment_method": "EF 3.1 / Land use / Soil quality index",
+            "indicator_result": {
+              "numeric_value": 2125.0823147171704,
+              "unit": "pt"
+            },
+            "method_version": "01.00.010",
+            "calculation_model_or_factor_set_reference": "ef-31ls.1b4a3713aa107847614cfdb3a67f4cf3"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Ozone depletion / Ozone Depletion Potential (ODP) ",
+            "indicator_name": "Ozone Depletion Potential (ODP) ",
+            "assessment_method": "EF 3.1 / Ozone depletion / Ozone Depletion Potential (ODP) ",
+            "indicator_result": {
+              "numeric_value": 0.0,
+              "unit": "kg CFC-11-Eq"
+            },
+            "method_version": "02.00.012",
+            "calculation_model_or_factor_set_reference": "ef-31oo.de55d8140824af914675b8ee2016e0a7"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Photochemical ozone formation - human health / Tropospheric ozone concentration increase",
+            "indicator_name": "Tropospheric ozone concentration increase",
+            "assessment_method": "EF 3.1 / Photochemical ozone formation - human health / Tropospheric ozone concentration increase",
+            "indicator_result": {
+              "numeric_value": 0.8098523110524651,
+              "unit": "kg NMVOC-Eq"
+            },
+            "method_version": "02.01.000",
+            "calculation_model_or_factor_set_reference": "ef-31pt.1851ce849f641340bcd48835f19edd4d"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Resource use, fossils / Abiotic resource depletion fossil fuels (ADP-fossil)",
+            "indicator_name": "Abiotic resource depletion fossil fuels (ADP-fossil)",
+            "assessment_method": "EF 3.1 / Resource use, fossils / Abiotic resource depletion fossil fuels (ADP-fossil)",
+            "indicator_result": {
+              "numeric_value": 1229.1784882275433,
+              "unit": "MJ"
+            },
+            "method_version": "01.00.010",
+            "calculation_model_or_factor_set_reference": "ef-31ra.d2baa1a06d65368ebd4039464896e5f4"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Resource use, minerals and metals / Abiotic resource depletion (ADP ultimate reserve)",
+            "indicator_name": "Abiotic resource depletion (ADP ultimate reserve)",
+            "assessment_method": "EF 3.1 / Resource use, minerals and metals / Abiotic resource depletion (ADP ultimate reserve)",
+            "indicator_result": {
+              "numeric_value": 0.03796696840807499,
+              "unit": "kg Sb-Eq"
+            },
+            "method_version": "01.00.010",
+            "calculation_model_or_factor_set_reference": "ef-31ra.aa24acfea9bf66bbf67d65ba49371743"
+          },
+          {
+            "assessment_dimension": "ENVIRONMENTAL",
+            "indicator_identifier": "EF 3.1 / Water use / User deprivation potential (deprivation-weighted water consumption)",
+            "indicator_name": "User deprivation potential (deprivation-weighted water consumption)",
+            "assessment_method": "EF 3.1 / Water use / User deprivation potential (deprivation-weighted water consumption)",
+            "indicator_result": {
+              "numeric_value": 272.964862028843,
+              "unit": "m3 world Eq deprived"
+            },
+            "method_version": "03.00.014",
+            "calculation_model_or_factor_set_reference": "ef-31wu.741eccfe717a02cd09898ec61be24d48"
+          }
+        ]
+      }
+    }
+  ]
+}

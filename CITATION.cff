@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: CE-RISE Digital Passport System: Local Demonstrator
+title: 'CE-RISE Digital Passport System: Local Demonstrator'
 type: software
 doi: 10.5281/zenodo.19093662
 authors:
@@ -14,7 +14,7 @@ identifiers:
     description: This DOI represents all software versions.
 repository-code: 'https://codeberg.org/CE-RISE-software/dp-system-local-demonstrator'
 abstract: >-
-  Local, Docker-only demonstrator for the CE-RISE Digital Passport system, running the hex-core-service with a reference backend and scripted flows to authenticate, upload/validate a passport record, persist it, and log in again to read it back.
+  Local demonstrator of a CE-RISE Digital Passport system using published service images, with scripted scenarios for record validation and persistence, RE Indicators calculation, and SEE Impacts calculation.
 keywords:
   - CE-RISE
   - Open Source

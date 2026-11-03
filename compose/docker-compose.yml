@@ -101,6 +101,31 @@ services:
             timeout: 5s
             retries: 20
 
+    see-impacts-calculation-service:
+        profiles:
+            - see-impacts
+        image: ${SEE_IMPACTS_CALC_IMAGE:-rg.fr-par.scw.cloud/ce-rise-software/see-impacts-calculation:v0.0.1}
+        restart: unless-stopped
+        depends_on:
+            hex-core-service:
+                condition: service_healthy
+        ports:
+            - "127.0.0.1:${SEE_IMPACTS_CALC_PORT:-8084}:8080"
+        environment:
+            HEX_CORE_BASE_URL: ${SEE_IMPACTS_HEX_CORE_BASE_URL:-http://hex-core-service:8080}
+            HTTP_TIMEOUT_SECS: ${SEE_IMPACTS_HTTP_TIMEOUT_SECS:-30}
+            CALCULATION_TIMEOUT_SECS: ${SEE_IMPACTS_CALCULATION_TIMEOUT_SECS:-900}
+            MAX_CONCURRENT_CALCULATIONS: ${SEE_IMPACTS_MAX_CONCURRENT_CALCULATIONS:-1}
+            BRIGHTWAY_WORKSPACE_DIR: /var/lib/see-impacts/brightway
+        healthcheck:
+            test:
+                - CMD-SHELL
+                - "python -c \"import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/capabilities', timeout=20).read()\""
+            interval: 30s
+            timeout: 25s
+            retries: 3
+            start_period: 30s
+
     demo-runner:
         build:
             context: ../demo/runner
@@ -114,8 +139,12 @@ services:
             DEMO_BASE_URL: ${DEMO_BASE_URL}
             DEMO_MODEL: ${DEMO_MODEL}
             DEMO_VERSION: ${DEMO_VERSION}
+            DEMO_BACKEND_URL: http://dp-storage-jsondb-service:8080
+            SEE_BASE_URL: ${DEMO_SEE_BASE_URL:-http://see-impacts-calculation-service:8080}
+            SEE_REQUEST_TIMEOUT_SECS: ${DEMO_SEE_TIMEOUT_SECS:-1020}
         volumes:
             - ../payloads:/payloads:ro,Z
+            - ./registry/catalog.json:/config/registry/catalog.json:ro,Z
 
 volumes:
     postgres_data:

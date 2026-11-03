@@ -17,18 +17,22 @@ compose_cmd() {
 
 print_help() {
   cat <<'EOF'
-Usage: ./demo.sh {up|demo|demo-re-indicators|down|clean|validate|validate-re-indicators}
+Usage: ./demo.sh {up|demo|demo-re-indicators|demo-see-impacts|down|clean|validate|validate-re-indicators|validate-see-impacts}
 
 Actions:
   up        Start the demonstrator stack in the background.
   demo      Start the stack and run the full demonstration pipeline.
   demo-re-indicators
             Start the stack and run the RE indicators laptop calculation pipeline.
+  demo-see-impacts
+            Calculate the PV example, compare all results, and persist/read back the records.
   down      Stop the stack and remove compose-managed containers.
   clean     Stop the stack and remove containers plus persistent volumes.
   validate  Check compose rendering and run stack smoke checks.
   validate-re-indicators
             Check compose rendering, service health, and a sample RE indicators compute flow.
+  validate-see-impacts
+            Check SEE readiness and input/output schemas without running a calculation.
 EOF
 }
 
@@ -92,7 +96,10 @@ wait_for_compose_stopped() {
 
   started="$(date +%s)"
   while true; do
-    output="$(podman ps -a --format '{{.Names}}' 2>/dev/null | grep '^compose_' || true)"
+    if ! output="$(compose_cmd ps -q 2>/dev/null)"; then
+      echo "Could not inspect this demonstrator's Compose containers." >&2
+      return 1
+    fi
     if [[ -z "$output" ]]; then
       return 0
     fi
@@ -104,6 +111,37 @@ wait_for_compose_stopped() {
     sleep 2
   done
 }
+
+run_see_impacts_scenario() (
+  local mode="$1"
+  local log_dir
+  log_dir="$(mktemp -d /tmp/dp-see-demo.XXXXXX)"
+  cleanup_see() {
+    COMPOSE_PROFILES=see-impacts compose_down_quiet || true
+    rm -rf "$log_dir"
+  }
+  trap cleanup_see EXIT
+
+  echo "Check 1/3: Compose file renders"
+  if ! run_compose_quiet "$log_dir/config.log" --profile see-impacts config; then
+    cat "$log_dir/config.log" >&2
+    return 1
+  fi
+  echo "Check 2/3: Start the core, backend, and published SEE image"
+  COMPOSE_PROFILES=see-impacts compose_down_quiet || true
+  wait_for_compose_stopped 60
+  if ! run_compose_quiet "$log_dir/up.log" --profile see-impacts up -d postgres dp-storage-jsondb-service hex-core-service see-impacts-calculation-service; then
+    cat "$log_dir/up.log" >&2
+    return 1
+  fi
+  compose_cmd build demo-runner
+  echo "Check 3/3: Run the SEE scenario inside the demo client container"
+  if ! compose_cmd --profile see-impacts run --rm --no-deps -T --entrypoint python3 \
+    demo-runner /usr/local/bin/see_impacts_demo.py "$mode"; then
+    compose_cmd --profile see-impacts logs hex-core-service dp-storage-jsondb-service see-impacts-calculation-service >&2 || true
+    return 1
+  fi
+)
 
 run_demo_pipeline() {
   local model version base_url valid_payload invalid_payload status record_id
@@ -349,6 +387,14 @@ case "${1:-}" in
     fi
     echo "Check 3/3 passed"
     echo "Demo passed"
+    ;;
+  demo-see-impacts|validate-see-impacts)
+    ensure_env
+    mode="demo"
+    if [[ "$1" == "validate-see-impacts" ]]; then
+      mode="validate"
+    fi
+    run_see_impacts_scenario "$mode"
     ;;
   down)
     ensure_env
