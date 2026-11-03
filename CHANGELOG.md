@@ -2,15 +2,15 @@
 
 All notable changes to `dp-system-local-demonstrator` are documented in this file.
 
-## [Unreleased]
+## [0.0.4] - 11-03-26
 
 ### Added
-- PV scenario using the released SEE image, live model validation, and comparison of all 25 indicators with the published reference
+- PV demonstration with live model validation and comparison of all 25 SEE impact indicators
 - Input and Integrated LCA persistence/read-back, plus invalid-input rejection
-- Lightweight SEE validation command and automated client tests
+- Lightweight SEE validation and automated client tests
 
 ### Changed
-- Pinned application images, extended the model catalog, and isolated the default Compose project without changing the existing scenario commands
+- Pinned application images, extended the model catalog, isolated the Compose project, and reorganized the usage documentation
 
 ## [0.0.3] - 04-16-26
 
